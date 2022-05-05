@@ -32,40 +32,35 @@ class Solution:
         #  if idx of both are out of range at the same time, then we found a match
         
         def dfs(sdx, pdx):
-            print(sdx, pdx)
+            # print(sdx, pdx)
+            if (sdx, pdx) in memo:
+                return memo[(sdx, pdx)]
             if sdx >= len(s) and pdx >= len(p):
                 return True
             if pdx >= len(p): # if we have no more pattern but more string
                 return False
             
             # case when next is *
-            match = False
-            if (pdx + 1 < len(p) and p[pdx + 1] == "*"):# if next has a star, check possibilities
-                if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
-                    match = dfs(sdx + 1, pdx)             # adding the char if current is matching
-                match = match or dfs(sdx, pdx + 2)        # if above is False, try not adding the char  
-                return match
+            if (pdx + 1 < len(p) and p[pdx + 1] == "*"):                 # if next has a star, check possibilities
+                addChar = False
+                if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."): # adding the char if current is matching
+                    addChar = dfs(sdx + 1, pdx)             
+                if addChar is False:                                     # adding char doesn't work, try skipping char
+                    skipChar = dfs(sdx, pdx + 2)
+                # match = match or dfs(sdx, pdx + 2)        
+                memo[(sdx, pdx)] = addChar or skipChar
+                return memo[(sdx, pdx)]
             
             # case when next isn't *
             if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
-                return dfs(sdx + 1, pdx + 1)
+                memo[(sdx, pdx)] = dfs(sdx + 1, pdx + 1)
+                return memo[(sdx, pdx)]
             
             # if next isn't a star, and current doesn't match, then return False
             return False
         
         
-            # if match:
-            #     match = dfs(sdx + 1, pdx + 1)
-            return match
-                
-            
-            # if s[sdx] == p[pdx] or p[pdx] == ".":
-            #     match = match or dfs(sdx + 1, pdx + 1)
-            # if match:
-            #     match = match or dfs(sdx + 1, pdx + 1)
-            
-            return match
-        
+        memo = {}        
         return dfs(0, 0)
                 
             
