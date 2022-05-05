@@ -32,7 +32,7 @@ class Solution:
         #  if idx of both are out of range at the same time, then we found a match
         
         def dfs(sdx, pdx):
-            # print(sdx, pdx)
+            print(sdx, pdx)
             if sdx >= len(s) and pdx >= len(p):
                 return True
             if pdx >= len(p): # if we have no more pattern but more string
@@ -45,17 +45,27 @@ class Solution:
             # else:
             #     match = False
             
-            match = sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == ".")
+                
+            # match = sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == ".")
+            
+            match = False
             if (pdx + 1 < len(p) and p[pdx + 1] == "*"):# if next has a star, check possibilities
-                match = match and dfs(sdx + 1, pdx)    # adding the char, only if current is matching
-                match = match or dfs(sdx, pdx + 2)               # not adding the char  
+                if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
+                    match = dfs(sdx + 1, pdx)             # adding the char, only if current is matching
+                # match = match and dfs(sdx + 1, pdx)     # adding the char, only if current is matching
+                match = match or dfs(sdx, pdx + 2)      # not adding the char  
                 return match
                 # match = dfs(sdx, pdx + 2) or (match and dfs(sdx + 1, pdx))
             
-            # if we have a match then continue checking
-            if match:
-                # return dfs(sdx + 1, pdx + 1)
+            # we've gone through the case when next is *
+            # this is if we have a match and next isn't *
+            if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
                 match = dfs(sdx + 1, pdx + 1)
+            return match
+        
+        
+            # if match:
+            #     match = dfs(sdx + 1, pdx + 1)
             return match
                 
             
