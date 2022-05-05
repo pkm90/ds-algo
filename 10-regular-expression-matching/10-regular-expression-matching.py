@@ -38,30 +38,20 @@ class Solution:
             if pdx >= len(p): # if we have no more pattern but more string
                 return False
             
-            # # still have string, there's a match, next pattern isn't *
-            # if (sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == ".") and (pdx + 1 < len(p) and p[pdx + 1] != "*")):
-            #     # match = True
-            #     match = dfs(sdx + 1, pdx + 1)
-            # else:
-            #     match = False
-            
-                
-            # match = sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == ".")
-            
+            # case when next is *
             match = False
             if (pdx + 1 < len(p) and p[pdx + 1] == "*"):# if next has a star, check possibilities
                 if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
-                    match = dfs(sdx + 1, pdx)             # adding the char, only if current is matching
-                # match = match and dfs(sdx + 1, pdx)     # adding the char, only if current is matching
-                match = match or dfs(sdx, pdx + 2)      # not adding the char  
+                    match = dfs(sdx + 1, pdx)             # adding the char if current is matching
+                match = match or dfs(sdx, pdx + 2)        # if above is False, try not adding the char  
                 return match
-                # match = dfs(sdx, pdx + 2) or (match and dfs(sdx + 1, pdx))
             
-            # we've gone through the case when next is *
-            # this is if we have a match and next isn't *
+            # case when next isn't *
             if sdx < len(s) and (s[sdx] == p[pdx] or p[pdx] == "."):
-                match = dfs(sdx + 1, pdx + 1)
-            return match
+                return dfs(sdx + 1, pdx + 1)
+            
+            # if next isn't a star, and current doesn't match, then return False
+            return False
         
         
             # if match:
