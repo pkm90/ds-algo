@@ -54,7 +54,7 @@ class Solution:
             
             # if we have a match then continue checking
             if match:
-                return dfs(sdx + 1, pdx + 1)
+                # return dfs(sdx + 1, pdx + 1)
                 match = dfs(sdx + 1, pdx + 1)
             return match
                 
