@@ -31,16 +31,11 @@ class LRUCache:
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        # curr = self.cache[key]
-        # currVal = self.cache[key].val
-        # self.remove(curr)
-        # self.insert(Node(key = key, val = currVal))
         self.remove(self.cache[key])
         self.insert(self.cache[key])
         return self.cache[key].val
 
     def put(self, key: int, value: int) -> None:
-        # newNode = Node(key = key, val = value)
         if key in self.cache:
             self.remove(self.cache[key])
         self.cache[key] = Node(key = key, val = value)
@@ -55,28 +50,10 @@ class LRUCache:
         prev, nxt = self.head, self.head.next
         prev.next, nxt.prev = node, node
         node.next, node.prev = nxt, prev
-        # oldHead = self.head.next
-        # oldHead.prev, self.head.next = node, node
-        # node.prev, node.next = self.head, oldHead
-        # self.cache[node.key] = node
-        # print('added', node.key)
         
     def remove(self, node):
-        node.prev.next, node.next.prev = node.next, node.prev
-        # print('removed', node.key)
-        
-        # print(key)
-        # oldNode = self.cache.get(key, None)
-        # if oldNode:
-        #     # oldNode = self.cache[key]
-        #     oldNode.prev.next, oldNode.next.prev = oldNode.next, oldNode.prev
-        # else:
-        #     oldNode = self.tail.prev
-        #     print(oldNode.val)
-        #     oldNode.prev.next, oldNode.next.prev = oldNode.next, oldNode.prev
-
-        
-
+        prev, nxt = node.prev, node.next
+        prev.next, nxt.prev = nxt, prev 
     
     
 
