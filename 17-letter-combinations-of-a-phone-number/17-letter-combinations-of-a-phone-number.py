@@ -10,11 +10,14 @@ class Solution:
         
         
         
-        # have to check if input is none, base case would break
-        # works for all valid inputs, 2-9
         
-        if len(digits) == 0:
-            return []
+        # backtrack through all combinations and return result
+        # time: N since we only hit each element once, 
+        # space: N for recursion stack, path, and res
+        
+        # have to check if input is none, base case would break
+        # have to check if input is empty string, would return a list with empty string
+        # works for all valid inputs, 2-9
         
         def createCombo(idx):
             # base
@@ -28,7 +31,11 @@ class Solution:
                 createCombo(idx + 1)
                 path.pop()
                 
-        # variables        
+        # check input            
+        if len(digits) == 0:
+            return []
+        
+        # variables
         choices = {'2': ['a','b','c'],
                   '3': ['d','e','f',],
                   '4': ['g','h','i',],
@@ -47,36 +54,7 @@ class Solution:
         return res
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        #####################################
         
         
 #         if len(digits) is 0: return None
