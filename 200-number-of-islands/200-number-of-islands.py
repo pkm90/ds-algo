@@ -10,6 +10,32 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        rows, cols = len(grid), len(grid[0])
         visit = set()
         count = 0
         
@@ -20,16 +46,11 @@ class Solution:
                or grid[row][col] == "0"):
                 return
             visit.add((row, col))
-            
             findLand(row + 1, col)
             findLand(row - 1, col)
             findLand(row, col + 1)
-            findLand(row, col - 1)
-
-            # if valid, add to visited and check adj land
-            
+            findLand(row, col - 1)            
         
-        rows, cols = len(grid), len(grid[0])
         for row in range(rows):
             for col in range(cols):
                 if (row, col) not in visit and grid[row][col] == "1":
@@ -39,43 +60,7 @@ class Solution:
         return count
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        ##################
         
         
 #         def explore(row, col):
@@ -146,7 +131,7 @@ class Solution:
         
 #         return islands
 
-
+####################3
 
 
 # second attempt passed
@@ -196,6 +181,7 @@ class Solution:
 #         return numislands
     
     ######################################################
+    
         # iterate through the grid
         # if we find land, then find the rest of hte land and mark visited
         # count number of times land has been found
