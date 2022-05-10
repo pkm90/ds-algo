@@ -18,34 +18,22 @@ class Solution:
         
         # we can recursively find all combinations while moving forward so we have no duplicates
         # if the total of our choices in any path == n and len(path) == k, then append and return
-        choices = [1,2,3,4,5,6,7,8,9]
-        current = 0
         
+        choices = [1,2,3,4,5,6,7,8,9]
         path = []
         res = []
-        visit = set()
         
-        def findCombo(idx, total):
-            # print(idx, total, path)
-            # if (idx, total) in visit:
-            #     return
-            # visit.add((idx, total))
-            
+        def findCombo(idx, total):            
+            if len(path) > k or total > n:
+                return
             if total == n and len(path) == k:
                 res.append(path.copy())
                 return
-            if len(path) > k or total > n or idx == 10:
-                return
 
-                
-            
-            for i in choices[idx: ]:  # take try taking these numbers
+            for i in range(idx + 1, 10): # choices[idx: ]: 
                 path.append(i)
                 findCombo(i, total + i)
-                path.pop()
-            
-            # findCombo(idx + 1, total)     # try not taking any numbers and moving to next
-            
+                path.pop()            
         
         findCombo(0, 0)
         return res
