@@ -23,14 +23,14 @@ class Solution:
         path = []
         res = []
         
-        def findCombo(idx, total):            
+        def findCombo(curr, total):            
             if len(path) > k or total > n:
                 return
             if total == n and len(path) == k:
                 res.append(path.copy())
                 return
 
-            for i in range(idx + 1, 10): # choices[idx: ]: 
+            for i in range(curr + 1, 10): # choices[idx: ]: 
                 path.append(i)
                 findCombo(i, total + i)
                 path.pop()            
