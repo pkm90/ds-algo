@@ -8,12 +8,54 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #################
+        
+        
         # prefix sums -.-
         # find how many need to be flipped before current
         # find how many need to be flipped after current
         # return the min of sum of both
         
-        prefixA, prefixB = [], [0]
+        prefixA, prefixB = [0], [0]
         countA, countB = 0, 0
         minSwaps = float(inf)
         
@@ -28,7 +70,7 @@ class Solution:
             prefixA.append(countA)
         
         prefixA.reverse()
-        prefixA.append(0)
+        # prefixA.append(0)
         # print(prefixA)
         # print(prefixB)
         
