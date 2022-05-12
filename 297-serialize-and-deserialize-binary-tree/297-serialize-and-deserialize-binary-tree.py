@@ -25,70 +25,142 @@ class Codec:
     def serialize(self, root: Optional[TreeNode]) -> str:
         """Encodes a tree to a single string.
         """
-        # we can do a bfs while appending nulls, comma delimiter?
-        q = collections.deque()
         res = []
-        q.append(root)
+        q = collections.deque([root])
+        
         while q:
             curr = q.popleft()
             if curr is None:
                 res.append('N,')
                 continue
-                
+            # print(curr)
+            # print(curr.val)
             res.append(str(curr.val) + ',')
             for child in [curr.left, curr.right]:
                 q.append(child)
-                
+        
         print(res)
         return ''.join(res)
-
+        
     def deserialize(self, data: str) -> Optional[TreeNode]:
         """Decodes your encoded data to tree.
         """
         print(data)
         listData = data.split(',')
-        if listData[0] == 'N':
+        print(listData)
+        if listData[0].isalpha():
             return None
-        else:
-            root = TreeNode(val = listData.pop(0))
+        root = TreeNode(val = listData.pop(0))
+        q = collections.deque([root])
         
-        q = collections.deque()
-        q.append(root)
         while q:
             curr = q.popleft()
-            print(curr)
             if curr is None:
                 continue
-            
-            lVal, rVal = listData.pop(0), listData.pop(0)
-            curr.left = None if lVal == 'N' else TreeNode(val = lVal)
-            curr.right = None if rVal == 'N' else TreeNode(val = rVal)
-            q.append(curr.left)
-            q.append(curr.right)
-            
-        # print(root)
+            leftVal = listData.pop(0) if listData else 'N'
+            rightVal = listData.pop(0) if listData else 'N'
+            curr.left = None if leftVal.isalpha() else TreeNode(val = leftVal)
+            curr.right = None if rightVal.isalpha() else TreeNode(val = rightVal)
+            for child in [curr.left, curr.right]:
+                q.append(child)
+                
         return root
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################
+
+
+# class Codec:
+
+#     def serialize(self, root: Optional[TreeNode]) -> str:
+#         """Encodes a tree to a single string.
+#         """
+#         # we can do a bfs while appending nulls, comma delimiter?
+#         q = collections.deque()
+#         res = []
+#         q.append(root)
+#         while q:
+#             curr = q.popleft()
+#             if curr is None:
+#                 res.append('N,')
+#                 continue
+                
+#             res.append(str(curr.val) + ',')
+#             for child in [curr.left, curr.right]:
+#                 q.append(child)
+                
+#         print(res)
+#         return ''.join(res)
+
+#     def deserialize(self, data: str) -> Optional[TreeNode]:
+#         """Decodes your encoded data to tree.
+#         """
+#         print(data)
+#         listData = data.split(',')
+#         if listData[0] == 'N':
+#             return None
+#         else:
+#             root = TreeNode(val = listData.pop(0))
         
-        
-        
-        
-  
+#         q = collections.deque()
+#         q.append(root)
+#         while q:
+#             curr = q.popleft()
+#             print(curr)
+#             if curr is None:
+#                 continue
+            
+#             lVal, rVal = listData.pop(0), listData.pop(0)
+#             curr.left = None if lVal == 'N' else TreeNode(val = lVal)
+#             curr.right = None if rVal == 'N' else TreeNode(val = rVal)
+#             q.append(curr.left)
+#             q.append(curr.right)
+            
+#         return root
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #######################
         
 # class Codec:
 #     # do a bfs, log all children including Nulls
