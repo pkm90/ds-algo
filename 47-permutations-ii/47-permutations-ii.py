@@ -1,3 +1,4 @@
+# do again until easy
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         
@@ -7,16 +8,12 @@ class Solution:
         
         
         
-        
+        ##########################
         
         # backtrackting
         # keep track of the choices
-        # go through each possible choice while removing options
-        # 
-        
-        
-        
-        
+        # go through possible choices if available  
+
         path, res = [], [] 
         n = len(nums)
         choices = Counter(nums)
@@ -36,47 +33,7 @@ class Solution:
         dfs()
         return res
             
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    ##############################
         
         
 #         # neetcode's
