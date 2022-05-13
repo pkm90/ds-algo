@@ -16,8 +16,18 @@ class Solution:
         
         
         
-        q = collections.deque([root])
         
+        
+        
+        
+        
+        
+        
+        
+        ##########################################
+        
+        
+        q = collections.deque([root])
         while q:
             numNodes = len(q)
             for level in range(numNodes):
@@ -25,47 +35,23 @@ class Solution:
                 if curr is None:
                     continue
                     
-                # print(curr.val)
-                
-                # if level != numNodes - 1:
-                    
-                    # temp = q[0]
-                    # while not
+                # finds the next non-null node if it exists in the level
                 for inode in range(numNodes - level - 1):
-                    # print(len(q), inode)
                     if q and q[inode] is not None:
                         curr.next = q[inode]
                         break
             
-                    
-                # curr.next = q[0]
                 for child in [curr.left, curr.right]:
                     q.append(child)
+                    
+            # always sets the last node.next in a level to None
             if curr:
                 curr.next = None
         
         return root
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        #########################
         
         
 #         # level order bfs, prev.next = current
