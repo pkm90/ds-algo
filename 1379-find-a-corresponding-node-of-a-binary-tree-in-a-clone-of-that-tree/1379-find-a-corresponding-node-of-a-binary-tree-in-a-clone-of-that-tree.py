@@ -11,6 +11,21 @@ class Solution:
         # iterate through both trees at once, if original.curr == target then return cloned.curr
         
         
+        def dfs(normal, cloned):
+            if normal is None:
+                return None
+            if normal == target:
+                return cloned
+            
+            lnode = dfs(normal.left, cloned.left)
+            rnode = dfs(normal.right, cloned.right)
+            return lnode or rnode
+        
+        return dfs(original, cloned)
+        
+        
+        
+        
         
         q = collections.deque([(original, cloned)])
         
