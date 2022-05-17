@@ -1,10 +1,3 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution:
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
         
@@ -27,7 +20,8 @@ class Solution:
         
         
         
-        q = collections.deque([(original, cloned)])
+        q = collections.deque()
+        q.append((original, cloned)) # each element is a node from original and cloned
         
         while q:
             normalCurr, clonedCurr = q.popleft()
@@ -35,9 +29,6 @@ class Solution:
             if normalCurr == target:
                 return clonedCurr
             if normalCurr.left:
-                q.append((normalCurr.left, clonedCurr.left))
+                q.append((normalCurr.left, clonedCurr.left)) # traversing through both trees at same time
             if normalCurr.right:
                 q.append((normalCurr.right, clonedCurr.right))
-            
-            
-            
