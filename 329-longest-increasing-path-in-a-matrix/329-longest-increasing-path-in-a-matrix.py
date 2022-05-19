@@ -9,15 +9,13 @@ class Solution:
         
         
         
-        
+        ###############################3
         
         
         rows, cols = len(matrix), len(matrix[0])
         res = 0
-        visit = set()
         work = {} # { (row, col):0 for row, col in zip(range(rows), range(cols)) }
         choices = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        print(work)
         
         
         def search(r, c, prev):
@@ -32,12 +30,8 @@ class Solution:
             for choice in choices:
                 row, col = choice[0] + r, choice[1] + c
                 maxpath = max(maxpath, 1 + search(row, col, matrix[r][c]))
-            # maxpath = max(maxpath, 1 + search(r - 1, c))
-            # maxpath = max(maxpath, 1 + search(r, c + 1))
-            # maxpath = max(maxpath, 1 + search(r, c - 1))
             work[(r, c)] = maxpath
             return maxpath
-        
         
         for r in range(rows):
             for c in range(cols):
