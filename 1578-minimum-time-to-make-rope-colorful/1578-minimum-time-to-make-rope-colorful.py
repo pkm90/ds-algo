@@ -19,10 +19,9 @@ class Solution:
                 # neededTime.pop(small)
                 # colors.pop(small)
                 prev = big
-                i = i + 1
             else:
                 prev = i
-                i += 1
+            i += 1
         
         return res
             
