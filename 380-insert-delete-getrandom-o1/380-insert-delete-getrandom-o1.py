@@ -17,8 +17,7 @@ class RandomizedSet:
         
     def remove(self, val: int) -> bool:
         if val in self.mem:
-            i = self.mem[val]
-            end = self.arr[-1]
+            i, end = self.mem[val], self.arr[-1]
             self.mem[val], self.mem[end] = self.mem[end], self.mem[val]
             self.arr[i], self.arr[-1] = self.arr[-1], self.arr[i]
             self.arr.pop()
