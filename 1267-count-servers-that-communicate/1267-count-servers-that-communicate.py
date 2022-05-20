@@ -28,6 +28,4 @@ class Solution:
                     and (totalRow[r] > 1 or totalCol[c] > 1)):
                     res += 1
          
-        print(totalRow)
-        print(totalCol)
         return res
