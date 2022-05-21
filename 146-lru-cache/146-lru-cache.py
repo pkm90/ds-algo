@@ -10,77 +10,165 @@
         
 
 #     def put(self, key: int, value: int) -> None:
-        
+
+
 
 class Node:
-    def __init__(self, key = None, val = None):
-        self.key = key
+    def __init__(self, val, key):
         self.val = val
-        self.prev = None
+        self.key = key
         self.next = None
-    
+        self.prev = None
+        
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}
-        self.head = Node()
-        self.tail = Node()
+        self.head = Node(val = None, key = None)
+        self.tail = Node(val = None, key = None)
         self.head.next, self.tail.prev = self.tail, self.head
 
     def get(self, key: int) -> int:
-        if key not in self.cache:
-            return -1
-        self.remove(self.cache[key])
-        self.insert(self.cache[key])
-        return self.cache[key].val
+        if key in self.cache:
+            # val = self.cache[key].val
+            # newNode = Node(val = self.cache[key].val, key = key)
+            print('get, before', key, self.tail.prev.key)
+            self.delete(self.cache[key])
+            self.insert(self.cache[key])
+            # self.cache[key] = newNode
+            print('get, after', key, self.tail.prev.key)
+            return self.cache[key].val
+        return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            self.remove(self.cache[key])
-        self.cache[key] = Node(key = key, val = value)
-        self.insert(self.cache[key])
+            # oldNode = self.cache[key]
+            # self.delete(oldNode)
+            self.delete(self.cache[key])
+        newNode = Node(val = value, key = key)
+        self.insert(newNode)
+        self.cache[key] = newNode
         
         if len(self.cache) > self.cap:
             lru = self.tail.prev
-            self.remove(lru)
+            self.delete(lru)
+            print(lru.val, lru.key)
             del self.cache[lru.key]
         
     def insert(self, node):
-        prev, nxt = self.head, self.head.next
-        prev.next, nxt.prev = node, node
-        node.next, node.prev = nxt, prev
+        # print('inserting', node.val, node.key)
+        node.prev, node.next = self.head, self.head.next
+        self.head.next.prev, self.head.next = node, node
         
-    def remove(self, node):
+        # prev, nxt = self.head, self.head.next
+        # node.prev, node.next = prev, nxt
+        # prev.next, nxt.prev = node, node
+        
+    def delete(self, node):
+        # print('deleting')
+        # print('lru before', self.tail.prev.key)
         prev, nxt = node.prev, node.next
-        prev.next, nxt.prev = nxt, prev 
-    
-    
+        prev.next, nxt.prev = nxt, prev
+        # print('lru after', self.tail.prev.key)
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ###################
+
+# class Node:
+#     def __init__(self, key = None, val = None):
+#         self.key = key
+#         self.val = val
+#         self.prev = None
+#         self.next = None
+    
+# class LRUCache:
+
+#     def __init__(self, capacity: int):
+#         self.cap = capacity
+#         self.cache = {}
+#         self.head = Node()
+#         self.tail = Node()
+#         self.head.next, self.tail.prev = self.tail, self.head
+
+#     def get(self, key: int) -> int:
+#         if key not in self.cache:
+#             return -1
+#         self.remove(self.cache[key])
+#         self.insert(self.cache[key])
+#         return self.cache[key].val
+
+#     def put(self, key: int, value: int) -> None:
+#         if key in self.cache:
+#             self.remove(self.cache[key])
+#         self.cache[key] = Node(key = key, val = value)
+#         self.insert(self.cache[key])
+        
+#         if len(self.cache) > self.cap:
+#             lru = self.tail.prev
+#             self.remove(lru)
+#             del self.cache[lru.key]
+        
+#     def insert(self, node):
+#         prev, nxt = self.head, self.head.next
+#         prev.next, nxt.prev = node, node
+#         node.next, node.prev = nxt, prev
+        
+#     def remove(self, node):
+#         prev, nxt = node.prev, node.next
+#         prev.next, nxt.prev = nxt, prev 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    ###############################
     
 
 # class Node:
