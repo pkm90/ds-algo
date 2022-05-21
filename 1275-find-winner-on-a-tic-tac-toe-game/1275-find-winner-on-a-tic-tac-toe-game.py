@@ -9,8 +9,7 @@ class Solution:
         # if we find an empty square, then print pending
         # else, print draw
         
-        
-        # checks
+        # checks, count number of occurrences...if there are 3 anywhere then we have a winner
         rowa, cola, d1a, d2a = [0, 0, 0],[0, 0, 0], 0, 0
         rowb, colb, d1b, d2b = [0, 0, 0],[0, 0, 0], 0, 0
         
@@ -58,43 +57,4 @@ class Solution:
             return "Pending"
         
         return "Draw"
-        
-                
-#         for i in range(3):
-#             if 
-        
-#         # checking vert
-#         for c in rows:
-#             if moves[0][c] == moves[1][c] and moves[1][c] == moves[2][c]:
-#                 return str(moves[0][c])
-#             check.clear()
-#             player = moves[0][c]
-#             check.add(moves[0][c])
-#             check.add(moves[1][c])
-#             check.add(moves[2][c])
-#             if player is None:
-#                 return "Pending"
-#             if len(check) == 1:
-#                 return str(player)
-        
-#         # checking hori
-#         for r in cols:
-#             check.clear()
-#             player = moves[r][0]
-#             check.add(moves[r][0])
-#             check.add(moves[r][1])
-#             check.add(moves[r][2])
-#             if player is None:
-#                 return "Pending"
-#             if len(check) == 1:
-#                 return str(player)
-        
-#         # checking diag
-        
-        
-        
-        
-        
-        
-#         return "Draw"
         
