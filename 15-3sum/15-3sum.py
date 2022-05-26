@@ -15,13 +15,6 @@ class Solution:
         n = len(nums)
         seen = {}
         
-        # for i in range(n):
-        #     for j in range(i + 1, n):
-        #         for k in range(j + 1, n):
-        #             if nums[i] + nums[j] + nums[k] == 0:
-        #                 res.append([nums[i], nums[j], nums[k]])
-        #                 # res.append([i, j, k])
-                        
         print(nums)
         for i, num in enumerate(nums):
             if i > 0 and nums[i] == nums[i - 1]:
@@ -39,7 +32,6 @@ class Solution:
                     while l < r and nums[l] == nums[l + 1]:
                         l += 1
                     l += 1
-                    # l += 1
                     r -= 1
 
         return res
