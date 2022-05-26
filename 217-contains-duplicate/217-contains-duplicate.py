@@ -3,21 +3,32 @@ class Solution:
         
         
         
-        # can sort it and check if any elements are the same
-        nums.sort()
-        for i in range(len(nums) - 1):
-            if nums[i] == nums[i + 1]:
-                return True
-        return False
+        # # can sort it and check if any elements are the same
+        # # time: nlogn
+        # # space: n if we count the space required to sort, otherwise 1
+        # nums.sort()
+        # for i in range(len(nums) - 1):
+        #     if nums[i] == nums[i + 1]:
+        #         return True
+        # return False
+    
         # can use hashmap and add elements
+        visit = set()
+        for num in nums:
+            if num in visit:
+                return True
+            visit.add(num)
+        return False
+        
+        
         # can put the input into a set and check length
         
         #################
         
-        # hashmap, iterate and add elements
-        # if an element exists, return True
-        # time: n
-        # space: n
+#         # hashmap, iterate and add elements
+#         # if an element exists, return True
+#         # time: n
+#         # space: n
         
 #         visited = set()
 #         for i in nums:
