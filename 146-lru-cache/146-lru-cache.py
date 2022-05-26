@@ -46,9 +46,9 @@ class LRUCache:
         self.head.next.prev, self.head.next = node, node
         
     def delete(self, node):
-        # prev, nxt = node.prev, node.next
-        # node.next, node.prev = nxt, prev
-        node.prev.next, node.next.prev = node.next, node.prev
+        prev, nxt = node.prev, node.next
+        prev.next, nxt.prev = nxt, prev
+        # node.prev.next, node.next.prev = node.next, node.prev
         
     def get(self, key: int) -> int:
         if key not in self.cache:
