@@ -29,25 +29,23 @@ class Solution:
                 return
             visited.add(num)
             streak[0] += 1
-            longest[0] = max(longest[0], streak[0])
+            # longest[0] = max(longest[0], streak[0])
             
             if num + 1 in nums:
                 findLongest(num + 1)
             if num - 1 in nums:
                 findLongest(num - 1)
             
-            
-            
-            
         nums = set(nums)
         visited = set()
-        longest = [0]
+        longest = 0
         for num in nums:
             if num not in visited:
                 streak = [0]
                 findLongest(num)
+                longest = max(longest, streak[0])
         
-        return longest[0]
+        return longest
         
         
         
