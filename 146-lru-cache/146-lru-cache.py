@@ -12,102 +12,149 @@
 #     def put(self, key: int, value: int) -> None:
 
 
+# class LRUCache:
+
+#     def __init__(self, capacity: int):
+        
+
+#     def get(self, key: int) -> int:
+        
+
+#     def put(self, key: int, value: int) -> None:
+
+
 
 class Node:
-    def __init__(self, val, key):
-        self.val = val
+    def __init__(self, key = None, val = None):
         self.key = key
+        self.val = val
         self.next = None
         self.prev = None
-        
+
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}
-        self.head = Node(val = None, key = None)
-        self.tail = Node(val = None, key = None)
+        self.head = Node()
+        self.tail = Node()
         self.head.next, self.tail.prev = self.tail, self.head
-
+    
+    def insert(self, node):
+        # temp = self.head.next
+        node.prev, node.next = self.head, self.head.next
+        self.head.next.prev, self.head.next = node, node
+        
+    def delete(self, node):
+        # prev, nxt = node.prev, node.next
+        # node.next, node.prev = nxt, prev
+        node.prev.next, node.next.prev = node.next, node.prev
+        
     def get(self, key: int) -> int:
-        if key in self.cache:
-            self.delete(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
-        return -1
+        if key not in self.cache:
+            return -1
+        self.delete(self.cache[key])
+        self.insert(self.cache[key])
+        return self.cache[key].val
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
             self.delete(self.cache[key])
-        self.cache[key] = Node(val = value, key = key)            
-        self.insert(self.cache[key])
+        newNode = Node(key = key, val = value)
+        self.insert(newNode)
+        self.cache[key] = newNode
         
         if len(self.cache) > self.cap:
             lru = self.tail.prev
             self.delete(lru)
             del self.cache[lru.key]
+    
         
-    def insert(self, node):
-        node.prev, node.next = self.head, self.head.next
-        self.head.next.prev, self.head.next = node, node # !!!!if set self.head.next before self.head.next.prev then errors
-        # prev, nxt = self.head, self.head.next
-        # node.prev, node.next = prev, nxt
-        # prev.next, nxt.prev = node, node
         
-    def delete(self, node):
-        prev, nxt = node.prev, node.next
-        prev.next, nxt.prev = nxt, prev
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ###############
 
+# class Node:
+#     def __init__(self, val, key):
+#         self.val = val
+#         self.key = key
+#         self.next = None
+#         self.prev = None
         
+# class LRUCache:
+
+#     def __init__(self, capacity: int):
+#         self.cap = capacity
+#         self.cache = {}
+#         self.head = Node(val = None, key = None)
+#         self.tail = Node(val = None, key = None)
+#         self.head.next, self.tail.prev = self.tail, self.head
+
+#     def get(self, key: int) -> int:
+#         if key in self.cache:
+#             self.delete(self.cache[key])
+#             self.insert(self.cache[key])
+#             return self.cache[key].val
+#         return -1
+
+#     def put(self, key: int, value: int) -> None:
+#         if key in self.cache:
+#             self.delete(self.cache[key])
+#         self.cache[key] = Node(val = value, key = key)            
+#         self.insert(self.cache[key])
         
+#         if len(self.cache) > self.cap:
+#             lru = self.tail.prev
+#             self.delete(lru)
+#             del self.cache[lru.key]
         
+#     def insert(self, node):
+#         node.prev, node.next = self.head, self.head.next
+#         self.head.next.prev, self.head.next = node, node # !!!!if set self.head.next before self.head.next.prev then errors
+#         # prev, nxt = self.head, self.head.next
+#         # node.prev, node.next = prev, nxt
+#         # prev.next, nxt.prev = node, node
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+#     def delete(self, node):
+#         prev, nxt = node.prev, node.next
+#         prev.next, nxt.prev = nxt, prev
+
+     
         ###################
 
 # class Node:
