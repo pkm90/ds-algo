@@ -10,6 +10,38 @@
 #         """Decodes a single string to a list of strings.
 #         """
         
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ################3
+    
+    
 class Codec:
     def encode(self, strs: [str]) -> str:
         """Encodes a list of strings to a single string.
@@ -35,9 +67,12 @@ class Codec:
                 i += 1
             num = int(''.join(num))
             
-            res.append(''.join(s[i + 1:i + num]))
+            res.append(s[i + 1:i + num])
             i = i + num
 
+        for i, s in enumerate(res):
+            res[i] = ''.join(res[i])
+            
         return res
         
 
