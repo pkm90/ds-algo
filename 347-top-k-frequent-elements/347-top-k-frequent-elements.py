@@ -4,21 +4,44 @@ class Solution:
         
         
         
+        
+        count = Counter(nums)
+        bucket = [ [] for i in range(len(nums) + 1) ]
+        for key, cnt in count.items():
+            bucket[cnt].append(key)
+        print(bucket)
+        
+        flat = []
+        for i in range(len(bucket) -1, -1, -1):
+            print(i)
+            flat.extend(bucket[i])
+        print(flat)
+        
+        return flat[:k]
+        
+        res = []
+        for i in range(k):
+            if len(res) >= k:
+                return res
+            
+        
+        
+        
         # count the elements
         # add the items into a heap
         # grab the items
         # clean the items
         # return results
-        count = Counter(nums)
-        maxHeap = []
-        for key, count in count.items():
-            maxHeap.append((-count, key))
+#         count = Counter(nums)
+#         maxHeap = []
+#         for key, count in count.items():
+#             maxHeap.append((-count, key))
         
-        heapq.heapify(maxHeap)
-        res = heapq.nsmallest(k, maxHeap)
-        for i in range(len(res)):
-            res[i] = res[i][1]
-        return res
+#         heapq.heapify(maxHeap)
+#         res = heapq.nsmallest(k, maxHeap)
+#         for i in range(len(res)):
+#             res[i] = res[i][1]
+#         return res
         
         
         
