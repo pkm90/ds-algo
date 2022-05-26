@@ -2,14 +2,15 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         
         
-        # can count numbers of char, and check if the counts are the same
-        countS = Counter(s)
-        countT = Counter(t)
-        return countS == countT
-
+#         # can count numbers of char, and check if the counts are the same
+#         countS = Counter(s)
+#         countT = Counter(t)
+#         return countS == countT
         
         # can sort the inputs and check equality
-        
+        s = sorted(list(s))
+        t = sorted(list(t))
+        return s == t
         
         
         
