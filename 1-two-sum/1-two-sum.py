@@ -6,11 +6,19 @@ class Solution:
         
         
         
-        # bruteforce
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums), 1):
-                if nums[i] + nums[j] == target:
-                    return (i, j)
+        # # bruteforce
+        # for i in range(len(nums)):
+        #     for j in range(i + 1, len(nums), 1):
+        #         if nums[i] + nums[j] == target:
+        #             return (i, j)
+                
+        # hashmap
+        visited = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in visited:
+                return (visited[diff], i)
+            visited[num] = i
             
         # bruteforce, 2ptrs and sort, hashmap
         # for i in range(len(nums)):
