@@ -7,21 +7,47 @@ class Solution:
         
         
         
-        nums = set(nums)
-        choices = set()
-        longest = 0
+#         nums = set(nums)
+#         choices = set()
+#         longest = 0
         
-        for num in nums:
-            streak = 1
-            if num - 1 not in nums:
-                while num + 1 in nums: # and num not in choices:
-                    streak += 1
-                    num += 1
-                    # choices.add(num)
-                longest = max(longest, streak)
+#         for num in nums:
+#             streak = 1
+#             if num - 1 not in nums:
+#                 while num + 1 in nums: # and num not in choices:
+#                     streak += 1
+#                     num += 1
+#                     # choices.add(num)
+#                 longest = max(longest, streak)
             
-        return longest
+#         return longest
         
+        def findLongest(num):
+            if num not in nums:
+                return
+            if num in visited:
+                return
+            visited.add(num)
+            streak[0] += 1
+            longest[0] = max(longest[0], streak[0])
+            
+            if num + 1 in nums:
+                findLongest(num + 1)
+            if num - 1 in nums:
+                findLongest(num - 1)
+            
+            
+            
+            
+        nums = set(nums)
+        visited = set()
+        longest = [0]
+        for num in nums:
+            if num not in visited:
+                streak = [0]
+                findLongest(num)
+        
+        return longest[0]
         
         
         
