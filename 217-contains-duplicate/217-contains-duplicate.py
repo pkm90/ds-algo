@@ -12,16 +12,21 @@ class Solution:
         #         return True
         # return False
     
-        # can use hashmap and add elements
-        visit = set()
-        for num in nums:
-            if num in visit:
-                return True
-            visit.add(num)
-        return False
-        
+#         # can use hashmap and add elements
+#         # time: n
+#         # space: n
+#         visit = set()
+#         for num in nums:
+#             if num in visit:
+#                 return True
+#             visit.add(num)
+#         return False
         
         # can put the input into a set and check length
+        temp = set(nums)
+        if len(temp) == len(nums):
+            return False
+        return True
         
         #################
         
