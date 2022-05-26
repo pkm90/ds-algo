@@ -6,7 +6,7 @@ class Solution:
         
         
         
-        
+        # bruteforce, only check if we are at a minimum
 #         nums = set(nums)
 #         choices = set()
 #         longest = 0
@@ -22,6 +22,8 @@ class Solution:
             
 #         return longest
         
+    
+        # dfs approach
         def findLongest(num):
             if num not in nums:
                 return
