@@ -18,6 +18,7 @@ class Solution:
         back = None
         res = 0
         
+        # find peak and separate heights
         for i, h in enumerate(height):
             if peak[0] < h:
                 peak = [h, i]
@@ -26,6 +27,7 @@ class Solution:
         back = height[peak[1]:]
         back.reverse()
         
+        # go through and calculate water
         maxSoFar = 0
         for h in front:
             diff = maxSoFar - h
@@ -41,4 +43,7 @@ class Solution:
             maxSoFar = max(maxSoFar, h)
         
         return res
+        
+        
+        
         
