@@ -8,24 +8,38 @@ class Solution:
         
         
         
-        pref = []
-        post = []
         res = []
         total = 1
-        
         for curr in nums:
-            pref.append(total)
+            res.append(total)
             total *= curr
-            
-        total = 1
-        for curr in range(len(nums) -1, -1, -1):
-            post.append(total)
-            total *= nums[curr]
-        post.reverse()
         
-        for i in range(len(nums)):
-            res.append(pref[i] * post[i])
+        total = 1
+        for curr in range(len(nums) - 1, -1, -1):
+            res[curr] = res[curr] * total
+            total *= nums[curr]
+        
         return res
+        
+#         pref = []
+#         post = []
+#         res = []
+#         total = 1
+        
+#         for curr in nums:
+#             pref.append(total)
+#             total *= curr
+            
+#         total = 1
+#         for curr in range(len(nums) - 1, -1, -1):
+#             post.append(total)
+#             total *= nums[curr]
+#         post.reverse()
+        
+#         for i in range(len(nums)):
+#             res.append(pref[i] * post[i])
+        
+#         return res
         
         
         
