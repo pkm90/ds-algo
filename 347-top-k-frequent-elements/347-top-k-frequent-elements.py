@@ -1,24 +1,71 @@
-# really good trick, keep doing this problem
+# really good techniques, keep doing this problem
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
         
         
-        
-        
-        # bucketsort, kinda...
-        # really good trick, keep doing this problem
-        count = Counter(nums)
-        freq = [ [] for i in range(len(nums) + 1) ]
-        for key, cnt in count.items():
-            freq[cnt].append(key)
-        print(freq)
-        
+        n = len(nums)
+        ordered = [ [] for _ in range(n + 1) ]
         res = []
-        for i in range(len(freq) -1, -1, -1):
-            res.extend(freq[i])
         
-        return res[:k]
+        count = Counter(nums)
+        
+        for key, num in count.items():
+            ordered[num].append(key)
+        ordered.reverse()
+        
+        for numSet in ordered:
+            for num in numSet:
+                res.append(num)
+                if len(res) == k:
+                    return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         # bucketsort, kinda...
+#         # really good trick, keep doing this problem
+#         count = Counter(nums)
+#         freq = [ [] for i in range(len(nums) + 1) ]
+#         for key, cnt in count.items():
+#             freq[cnt].append(key)
+#         print(freq)
+        
+#         res = []
+#         for i in range(len(freq) -1, -1, -1):
+#             res.extend(freq[i])
+        
+#         return res[:k]
             
         
         
