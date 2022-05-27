@@ -1,35 +1,92 @@
-####
-# do again?
-####
+# this is a bullshit problem, but very common and can help other problems
+# try drawing out problem and doing it by hand to see what we need
+# keep doing it...
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         
         
         
-        pre, post = [], []
-        total = 1
-        for num in nums:
-            pre.append(total)
-            total *= num
-            # post.append(total)
-        # post.reverse()
         
-        total = 1
-        for i in range(len(nums) -1, -1, -1):
-            post.append(total)
-            total *= nums[i]
-        post.reverse()
-            
-            
+        pref = []
+        post = []
         res = []
-        for l, r in zip(pre, post):
-            res.append(l * r)
+        total = 1
+        
+        for curr in nums:
+            pref.append(total)
+            total *= curr
             
-        print(pre)
-        print(post)
-        print(res)
+        total = 1
+        for curr in range(len(nums) -1, -1, -1):
+            post.append(total)
+            total *= nums[curr]
+        post.reverse()
+        
+        for i in range(len(nums)):
+            res.append(pref[i] * post[i])
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ##################
+        
+        
+#         pre, post = [], []
+#         total = 1
+#         for num in nums:
+#             pre.append(total)
+#             total *= num
+#             # post.append(total)
+#         # post.reverse()
+        
+#         total = 1
+#         for i in range(len(nums) -1, -1, -1):
+#             post.append(total)
+#             total *= nums[i]
+#         post.reverse()
+            
+            
+#         res = []
+#         for l, r in zip(pre, post):
+#             res.append(l * r)
+            
+#         print(pre)
+#         print(post)
+#         print(res)
+#         return res
         
         
         
