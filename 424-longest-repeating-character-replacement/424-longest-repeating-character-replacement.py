@@ -17,11 +17,10 @@ class Solution:
             contents[s[R]] = contents.get(s[R], 0) + 1
             
             # shrink window if invalid
-            nondom = sum(contents.values()) - max(contents.values())
-            while nondom > k:
+            king = max(contents.values())   # nondom = sum(contents.values()) - max(contents.values())
+            while (R - L + 1) - king > k:   # while nondom > k:
                 contents[s[L]] -= 1
-                L += 1
-                nondom = sum(contents.values()) - max(contents.values())
+                L += 1                      # nondom = sum(contents.values()) - max(contents.values())
             
             res = max(res, R - L + 1)
 
