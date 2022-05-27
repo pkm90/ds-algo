@@ -27,6 +27,7 @@ class Solution:
                 rows[r].add(val)
                 cols[c].add(val)
                 box[(r//3, c//3)].add(val)
+                
         return True
         
         
