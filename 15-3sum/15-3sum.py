@@ -9,6 +9,83 @@ class Solution:
         
         
         
+        nums.sort()
+        res = []
+        for i, num in enumerate(nums):
+            if (i > 0 and nums[i] == nums[i - 1]):
+                continue
+            
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                val = nums[i] + nums[l] + nums[r]
+                if val < 0:
+                    l += 1
+                elif val > 0:
+                    r -= 1
+                else:
+                    # append the result, iterate both, iterate l if duplicate
+                    res.append([nums[i], nums[l], nums[r]])
+                    while l < r and nums[l] == nums[l + 1]:
+                        l += 1
+                    l += 1
+                    r -= 1
+                    
+        return res
+                    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #################
+        
+#         # bruteforce with set to weed out duplicates
+#         res = set()
+#         n = len(nums)
+#         nums.sort()
+        
+#         for i in range(n):
+#             if nums[i] > 0:
+#                 break
+#             for j in range(i + 1, n):
+#                 for k in range(j + 1, n):
+#                     total = nums[i] + nums[j] + nums[k]
+#                     if total == 0:
+#                         combo = (nums[i], nums[j], nums[k])
+#                         sorted(combo)
+#                         res.add(combo)
+#         return res
+        
+        
+#####################
+        
         
 
         
@@ -25,31 +102,31 @@ class Solution:
 #         return res
                    
         
-        nums.sort()
-        res = []
-        n = len(nums)
-        seen = {}
+#         nums.sort()
+#         res = []
+#         n = len(nums)
+#         seen = {}
         
-        print(nums)
-        for i, num in enumerate(nums):
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
+#         print(nums)
+#         for i, num in enumerate(nums):
+#             if i > 0 and nums[i] == nums[i - 1]:
+#                 continue
             
-            l, r = i + 1, len(nums) - 1
-            while l < r:
-                total = num + nums[l] + nums[r]
-                if total < 0:
-                    l += 1
-                elif total > 0:
-                    r -= 1
-                else:
-                    res.append([num, nums[l], nums[r]])
-                    while l < r and nums[l] == nums[l + 1]:
-                        l += 1
-                    l += 1
-                    r -= 1
+#             l, r = i + 1, len(nums) - 1
+#             while l < r:
+#                 total = num + nums[l] + nums[r]
+#                 if total < 0:
+#                     l += 1
+#                 elif total > 0:
+#                     r -= 1
+#                 else:
+#                     res.append([num, nums[l], nums[r]])
+#                     while l < r and nums[l] == nums[l + 1]:
+#                         l += 1
+#                     l += 1
+#                     r -= 1
 
-        return res
+#         return res
         
         
         
