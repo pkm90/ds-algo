@@ -7,19 +7,77 @@ class Solution:
         
         
         
-        
+        pref = []
+        post = []
         res = []
-        total = 1
-        for curr in nums:
-            res.append(total)
-            total *= curr
         
         total = 1
-        for curr in range(len(nums) - 1, -1, -1):
-            res[curr] = res[curr] * total
-            total *= nums[curr]
+        for num in nums:
+            pref.append(total)
+            total *= num
+            
+        total = 1
+        for i in range(len(nums) - 1, -1, -1):
+            post.append(total)
+            total *= nums[i]
+        post.reverse()
         
+        for i in range(len(nums)):
+            res.append(pref[i] * post[i])
+            
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ########################
+        
+        # only using output as extra memory
+#         res = []
+#         total = 1
+#         for curr in nums:
+#             res.append(total)
+#             total *= curr
+        
+#         total = 1
+#         for curr in range(len(nums) - 1, -1, -1):
+#             res[curr] = res[curr] * total
+#             total *= nums[curr]
+        
+#         return res
+        
         
 #         pref = []
 #         post = []
@@ -40,39 +98,6 @@ class Solution:
 #             res.append(pref[i] * post[i])
         
 #         return res
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         ##################
