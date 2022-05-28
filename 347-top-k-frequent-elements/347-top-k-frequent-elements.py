@@ -4,25 +4,43 @@ class Solution:
         
         
         
-        # count elements, put in hashmap
-        count = Counter(nums)
-        
-        # throw elements into heap
-        heap = [ (-1 * freq, key) for key, freq in count.items() ]
-        heapq.heapify(heap)
-        
-        # pop from heap k times
-        res = []
-        # res = heapq.nsmallest(k, heap)
-        # res = [ key for freq, key in res ]
-
-        for i in range(k):
-            curr = heapq.heappop(heap)
-            res.append(curr[1])
-        return res
-        
         # count elements, put into array where idx is the freq
+        count = Counter(nums)
+        freq = [ [] for i in range(len(nums)) ]
+        for key, cnt in count.items():
+            freq[cnt - 1].append(key)
+        print(freq)
+        
         # iterate backwards until result hold k elements
+        res = []
+        for i in range(len(freq) - 1, -1, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+        print('outside')
+                
+        
+        
+        
+#         # count elements, put in hashmap
+#         count = Counter(nums)
+        
+#         # throw elements into heap
+#         heap = [ (-1 * freq, key) for key, freq in count.items() ]
+#         heapq.heapify(heap)
+        
+#         # pop from heap k times
+#         res = []
+#         # res = heapq.nsmallest(k, heap)
+#         # res = [ key for freq, key in res ]
+#         for i in range(k):
+#             curr = heapq.heappop(heap)
+#             res.append(curr[1])
+#         return res
+        
+        
+
         
         
         
