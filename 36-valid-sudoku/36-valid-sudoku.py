@@ -7,22 +7,19 @@ class Solution:
         
         
         
-        
-        rows = [ set() for _ in range(9) ]
-        cols = [ set() for _ in range(9) ]
+        rows = [ set() for i in range(9) ]
+        cols = [ set() for i in range(9) ]
         box = collections.defaultdict(set)
         
         for r in range(9):
             for c in range(9):
                 val = board[r][c]
-                if not val.isdigit():
+                if val == ".":
                     continue
-                
-                if val in rows[r]:
-                    return False
-                if val in cols[c]:
-                    return False
-                if val in box[(r//3, c//3)]:
+                    
+                if (val in rows[r]
+                    or val in cols[c]
+                    or val in box[(r//3, c//3)]):
                     return False
                 rows[r].add(val)
                 cols[c].add(val)
@@ -74,7 +71,29 @@ class Solution:
         
         
         
+        ######################################
         
+#         rows = [ set() for _ in range(9) ]
+#         cols = [ set() for _ in range(9) ]
+#         box = collections.defaultdict(set)
+        
+#         for r in range(9):
+#             for c in range(9):
+#                 val = board[r][c]
+#                 if not val.isdigit():
+#                     continue
+                
+#                 if val in rows[r]:
+#                     return False
+#                 if val in cols[c]:
+#                     return False
+#                 if val in box[(r//3, c//3)]:
+#                     return False
+#                 rows[r].add(val)
+#                 cols[c].add(val)
+#                 box[(r//3, c//3)].add(val)
+                
+#         return True
         
         #############################
         
