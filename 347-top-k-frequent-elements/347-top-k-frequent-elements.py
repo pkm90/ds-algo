@@ -13,9 +13,12 @@ class Solution:
         
         # pop from heap k times
         res = []
-        # for i in range(k):
-        res = heapq.nsmallest(k, heap)
-        res = [ key for freq, key in res ]
+        # res = heapq.nsmallest(k, heap)
+        # res = [ key for freq, key in res ]
+
+        for i in range(k):
+            curr = heapq.heappop(heap)
+            res.append(curr[1])
         return res
         
         # count elements, put into array where idx is the freq
