@@ -1,30 +1,25 @@
-# really good techniques, keep doing this problem
+# really good tricks and techniques, keep doing this problem
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
         
         
-        n = len(nums)
-        ordered = [ [] for _ in range(n + 1) ]
-        res = []
-        
+        # count elements, put in hashmap
         count = Counter(nums)
         
-        for key, num in count.items():
-            ordered[num].append(key)
-        ordered.reverse()
+        # throw elements into heap
+        heap = [ (-1 * freq, key) for key, freq in count.items() ]
+        heapq.heapify(heap)
         
-        for numSet in ordered:
-            for num in numSet:
-                res.append(num)
-                if len(res) == k:
-                    return res
+        # pop from heap k times
+        res = []
+        # for i in range(k):
+        res = heapq.nsmallest(k, heap)
+        res = [ key for freq, key in res ]
+        return res
         
-        
-        
-        
-        
-        
+        # count elements, put into array where idx is the freq
+        # iterate backwards until result hold k elements
         
         
         
@@ -51,6 +46,37 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #############################3
+        
+#         n = len(nums)
+#         ordered = [ [] for _ in range(n + 1) ]
+#         res = []
+        
+#         count = Counter(nums)
+        
+#         for key, num in count.items():
+#             ordered[num].append(key)
+#         ordered.reverse()
+        
+#         for numSet in ordered:
+#             for num in numSet:
+#                 res.append(num)
+#                 if len(res) == k:
+#                     return res
+        
+        #######################
         
         
 #         # bucketsort, kinda...
@@ -66,8 +92,6 @@ class Solution:
 #             res.extend(freq[i])
         
 #         return res[:k]
-            
-        
         
         
         # count the elements
@@ -87,13 +111,7 @@ class Solution:
 #         return res
         
         
-        
-        
-        
-        
-        
-        
-        
+        ###################3
         
         # initial thoughts
         # we can put them into a heap where each element contains the number and frequency
