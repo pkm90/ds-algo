@@ -46,163 +46,124 @@
 
 
 
-# class Codec:
-#     def encode(self, strs: [str]) -> str:
-#         """Encodes a list of strings to a single string.
-#         """
-        
-
-#     def decode(self, s: str) -> [str]:
-#         """Decodes a single string to a list of strings.
-#         """
-
-
-
 class Codec:
     def encode(self, strs: [str]) -> str:
         """Encodes a list of strings to a single string.
         """
         res = []
-        for s in strs:
-            res.append(str(len(s)) + "#" + s)
         
-        print(res)
+        for s in strs:
+            res.append(str(len(s) + 1) + "#" + s)
+        
         return ''.join(res)
         
 
     def decode(self, s: str) -> [str]:
         """Decodes a single string to a list of strings.
         """
+        print(s)
         res = []
         s = list(s)
-        print(s)
         
         i = 0
         while i < len(s):
-            curr = s[i]
-            
-            # grab digit
             digit = []
-            while curr.isdigit():
-                digit.append(curr)
+            while s[i].isdigit():
+                digit.append(s[i])
                 i += 1
-                curr = s[i]
             digit = int(''.join(digit))
             
-            # append string
-            string = s[i + 1 : i + digit + 1]
-            res.append(''.join(string))
-            
-            i += digit + 1
-            
-        return res
+            res.append(''.join(s[i + 1:i + digit]))
+            i += digit
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ################3
-    
-    
+        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################3
+
 # class Codec:
 #     def encode(self, strs: [str]) -> str:
 #         """Encodes a list of strings to a single string.
 #         """
 #         res = []
 #         for s in strs:
-#             res.append(str(len(s) + 1) + "#" + s)
-#             # res.append(s + '1')
+#             res.append(str(len(s)) + "#" + s)
+        
+#         print(res)
 #         return ''.join(res)
+        
 
 #     def decode(self, s: str) -> [str]:
 #         """Decodes a single string to a list of strings.
 #         """
-#         print(s)
 #         res = []
 #         s = list(s)
-#         string = []
+#         print(s)
+        
 #         i = 0
 #         while i < len(s):
-#             num = []
-#             while s[i].isdigit():
-#                 num.append(s[i])
-#                 i += 1
-#             num = int(''.join(num))
+#             curr = s[i]
             
-#             res.append(s[i + 1:i + num])
-#             i = i + num
-
-#         for i, s in enumerate(res):
-#             res[i] = ''.join(res[i])
+#             # grab digit
+#             digit = []
+#             while curr.isdigit():
+#                 digit.append(curr)
+#                 i += 1
+#                 curr = s[i]
+#             digit = int(''.join(digit))
+            
+#             # append string
+#             string = s[i + 1 : i + digit + 1]
+#             res.append(''.join(string))
+            
+#             i += digit + 1
             
 #         return res
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##############33333333333333
 
 # class Codec:
 #     def encode(self, strs: [str]) -> str:
