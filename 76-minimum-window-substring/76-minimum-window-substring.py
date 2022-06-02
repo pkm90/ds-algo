@@ -7,8 +7,8 @@ class Solution:
         # while it is valid, make it smaller until it is invalid
         # return the smallest valid window
         
-        if len(t) > len(s):
-            return ''
+        # if len(t) > len(s):
+        #     return ''
         
         reqs = Counter(t)
         contents = {}
