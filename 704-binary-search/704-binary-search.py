@@ -2,10 +2,9 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
         
-        # if len(nums) == 1:
-        #     return 0 if nums[0] == target else -1
+        # trying out the template: https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template.-solved-many-problems
         
-        l, r = 0, len(nums)
+        l, r = 0, len(nums) # have to cover entire search space
         while l < r:
             mid = (l + r) // 2
             if nums[mid] > target:
@@ -14,7 +13,7 @@ class Solution:
                 l = mid + 1
         
         print(l)
-        if nums[l - 1] == target:
+        if nums[l - 1] == target: # since l is the minimal k that satisfies condition
             print('found')
             return l - 1
         
