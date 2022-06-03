@@ -50,8 +50,9 @@ class Solution:
                 res = min(res, mid)
             else:
                 l = mid + 1
-                
-        return res
+        
+        print(l, res)
+        return l
         
         
         
