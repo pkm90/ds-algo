@@ -6,11 +6,33 @@ class Solution:
         
         
         
-        # extend into one array and search
-        nums = []
-        for r in matrix:
-            nums.extend(r)
+#         # extend into one array and search
+#         nums = []
+#         for r in matrix:
+#             nums.extend(r)
         
+#         l, r = 0, len(nums)
+#         while l < r:
+#             mid = (l + r) // 2
+#             if nums[mid] > target:
+#                 r = mid
+#             else:
+#                 l = mid + 1
+        
+#         if nums[l - 1] == target:
+#             return True
+#         return False
+        
+        # search for the correct row, then search for the correct col in that row
+        t, b = 0, len(matrix)
+        while t < b:
+            mid = (t + b) // 2
+            if matrix[mid][0] > target:
+                b = mid
+            else:
+                t = mid + 1
+        
+        nums = matrix[t - 1]
         l, r = 0, len(nums)
         while l < r:
             mid = (l + r) // 2
@@ -22,8 +44,6 @@ class Solution:
         if nums[l - 1] == target:
             return True
         return False
-        
-        # search for the correct row, then search for the correct col in that row
         
         
         
