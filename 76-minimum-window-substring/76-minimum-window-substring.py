@@ -3,12 +3,48 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ####################
         # we can count the contents of a sliding window
         # while it is valid, make it smaller until it is invalid
         # return the smallest valid window
-        
-        # if len(t) > len(s):
-        #     return ''
         
         reqs = Counter(t)
         contents = {}
