@@ -1,7 +1,37 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        
-        
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        ###############
         res = []
         l, r = 0, k - 1
         stack = collections.deque() # [index, val]
@@ -18,8 +48,6 @@ class Solution:
             while stack and stack[-1][1] < nums[r]:
                 stack.pop()
             stack.append([r, nums[r]])
-            
-
             res.append(stack[0][1])
             
         return res
