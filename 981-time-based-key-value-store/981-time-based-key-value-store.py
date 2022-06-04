@@ -44,7 +44,24 @@
 #     def get(self, key: str, timestamp: int) -> str:
         
     
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+################################
 
 # we can use a hashmap of hashmaps
 # initial hashmap is the key : hashmap
@@ -71,37 +88,50 @@ class TimeMap:
         #         break
         #     prev = value
         # return prev
-        if key not in self.storage:
-            return ""
+        
+#         if key not in self.storage:
+#             return ""
 
-        bucket = self.storage[key]
-        l, r = 0, len(bucket) - 1
-        while l <= r:
-            mid = (l + r) // 2
-            time, value = bucket[mid]
-            if timestamp == time:
-                return value
+#         bucket = self.storage[key]
+#         l, r = 0, len(bucket) - 1
+#         while l <= r:
+#             mid = (l + r) // 2
+#             time, value = bucket[mid]
+#             if timestamp == time:
+#                 return value
             
-            if timestamp < time:
-                r = mid - 1
-            else:
-                l = mid + 1
+#             if timestamp < time:
+#                 r = mid - 1
+#             else:
+#                 l = mid + 1
                 
-        if bucket[r][0] < timestamp:
-            # print('right')
-            return bucket[r][1]
-        return ""        
+#         if bucket[r][0] < timestamp:
+#             # print('right')
+#             return bucket[r][1]
+#         return ""        
         
         
         # below I'm trying hte template, gave up...
         
-        while l < r:
+        res = ''
+        bucket = self.storage.get(key, [])
+        l, r = 0, len(bucket) - 1
+        print('############')
+        while l <= r:
             mid = (l + r) // 2
             currTime, value = bucket[mid]
-            if timestamp >= currTime:
-                r = mid
-            else:
+            print(currTime, timestamp)
+            if currTime <= timestamp:
+                # print('changing res', value)
+                res = value
                 l = mid + 1
+            else:
+                r = mid - 1
+        
+        
+     
+        return res
+        
         print(bucket)
         return bucket[l][1]
         if bucket[l][0] == timestamp:
@@ -109,52 +139,22 @@ class TimeMap:
             print(timestamp, bucket[l][0])
             return bucket[l][1]
         
-        l, r = 0, len(bucket) - 1
-        while l < r:
-            mid = (l + r) // 2
-            currTime, value = bucket[mid]
-            if currTime != timestamp and currTime < timestamp:
-                r = mid
-            else:
-                l = l + 1
-        if bucket[l] is None:
-            return ""
-        else:
-            print(bucket)
-            print(l)
-            return bucket[l][1]
+#         l, r = 0, len(bucket) - 1
+#         while l < r:
+#             mid = (l + r) // 2
+#             currTime, value = bucket[mid]
+#             if currTime != timestamp and currTime < timestamp:
+#                 r = mid
+#             else:
+#                 l = l + 1
+#         if bucket[l] is None:
+#             return ""
+#         else:
+#             print(bucket)
+#             print(l)
+#             return bucket[l][1]
         
         # return self.map[key]
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-
