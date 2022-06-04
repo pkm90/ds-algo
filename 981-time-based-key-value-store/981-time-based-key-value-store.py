@@ -111,25 +111,18 @@ class TimeMap:
 #         return ""        
         
         
-        # below I'm trying hte template, gave up...
-        
+        # below I'm trying hte template, gave up...changed to something I understand...
         res = ''
         bucket = self.storage.get(key, [])
         l, r = 0, len(bucket) - 1
-        print('############')
         while l <= r:
             mid = (l + r) // 2
             currTime, value = bucket[mid]
-            print(currTime, timestamp)
             if currTime <= timestamp:
-                # print('changing res', value)
                 res = value
                 l = mid + 1
             else:
                 r = mid - 1
-        
-        
-     
         return res
         
         print(bucket)
