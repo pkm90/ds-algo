@@ -73,7 +73,7 @@ class TimeMap:
         # return prev
         if key not in self.storage:
             return ""
-        res = ""
+
         bucket = self.storage[key]
         l, r = 0, len(bucket) - 1
         while l <= r:
@@ -81,24 +81,19 @@ class TimeMap:
             time, value = bucket[mid]
             if timestamp == time:
                 return value
+            
             if timestamp < time:
                 r = mid - 1
             else:
                 l = mid + 1
+                
         if bucket[r][0] < timestamp:
-            print('right')
+            # print('right')
             return bucket[r][1]
-        return ""
-        
-        l, r = 0, len(bucket) - 1
-        while l <= r:
-            mid = (l + r) // 2
-            time, value = bucket[mid]
-            # if time < 
+        return ""        
         
         
-        
-        
+        # below I'm trying hte template, gave up...
         
         while l < r:
             mid = (l + r) // 2
