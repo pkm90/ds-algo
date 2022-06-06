@@ -63,9 +63,9 @@
     
 ################################
 
-# we can use a hashmap of hashmaps
-# initial hashmap is the key : hashmap
-# next hashmap is the timestamp : value
+# we can use a hashmap of lists
+# hashmap is the key : list
+# list is [ timestamp : value ]
 
 class TimeMap:
 
@@ -89,6 +89,18 @@ class TimeMap:
         #     prev = value
         # return prev
         
+        res = ""
+        values = self.storage.get(key, [])
+        l, r = 0, len(values) - 1
+        while l <= r:
+            mid = (l + r) // 2
+            if values[mid][0] <= timestamp:
+                res = values[mid][1]
+                l = mid + 1
+            else:
+                r = mid - 1
+        return res
+        
 #         if key not in self.storage:
 #             return ""
 
@@ -111,26 +123,26 @@ class TimeMap:
 #         return ""        
         
         
-        # below I'm trying hte template, gave up...changed to something I understand...
-        res = ''
-        bucket = self.storage.get(key, [])
-        l, r = 0, len(bucket) - 1
-        while l <= r:
-            mid = (l + r) // 2
-            currTime, value = bucket[mid]
-            if currTime <= timestamp:
-                res = value
-                l = mid + 1
-            else:
-                r = mid - 1
-        return res
+#         # below I'm trying hte template, gave up...changed to something I understand...
+#         res = ''
+#         bucket = self.storage.get(key, [])
+#         l, r = 0, len(bucket) - 1
+#         while l <= r:
+#             mid = (l + r) // 2
+#             currTime, value = bucket[mid]
+#             if currTime <= timestamp:
+#                 res = value
+#                 l = mid + 1
+#             else:
+#                 r = mid - 1
+#         return res
         
-        print(bucket)
-        return bucket[l][1]
-        if bucket[l][0] == timestamp:
-            print('found')
-            print(timestamp, bucket[l][0])
-            return bucket[l][1]
+#         print(bucket)
+#         return bucket[l][1]
+#         if bucket[l][0] == timestamp:
+#             print('found')
+#             print(timestamp, bucket[l][0])
+#             return bucket[l][1]
         
 #         l, r = 0, len(bucket) - 1
 #         while l < r:
