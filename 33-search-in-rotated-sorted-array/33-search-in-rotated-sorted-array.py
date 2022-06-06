@@ -13,9 +13,9 @@ class Solution:
         l, r = 0, len(nums) - 1
         while l <= r:
             mid = (l + r) // 2
-            if nums[pivot] > nums[mid]:
-                pivot = mid
-            # pivot = min(pivot, nums[mid])
+            # if nums[pivot] > nums[mid]:
+            #     pivot = mid
+            pivot = mid if nums[pivot] > nums[mid] else pivot # min(pivot, nums[mid])
             if nums[mid] > nums[r]:
                 l = mid + 1
             else:
@@ -27,7 +27,6 @@ class Solution:
         else:
             r = pivot
             
-        print(l, r, nums[l:r + 1])
         
         while l <= r:
             mid = (l + r) // 2
