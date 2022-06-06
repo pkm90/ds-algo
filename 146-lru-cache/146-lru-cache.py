@@ -77,7 +77,8 @@ class LRUCache:
         
     def remove(self, n):
         # prev, nxt = n.prev, n.next
-        n.prev.next, n.next.prev = n.next, n.prev
+        # n.prev.next, n.next.prev = n.next, n.prev
+        n.next.prev, n.prev.next = n.prev, n.next
 
 
 
