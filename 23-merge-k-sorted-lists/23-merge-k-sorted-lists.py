@@ -17,20 +17,25 @@ class Solution:
         
         
         while len(lists) > 1:
-            dummy = ListNode()
-            tail = dummy
-            l1, l2 = lists.pop(), lists.pop()
-            while l1 and l2:
-                if l1.val < l2.val:
-                    tail.next = l1
-                    l1 = l1.next
-                else:
-                    tail.next = l2
-                    l2 = l2.next
-                tail = tail.next
-            tail.next = l1 or l2
-            lists.append(dummy.next)
-        # print(lists)
+            merged = []
+            
+            for _ in range(len(lists) // 2):
+                dummy = ListNode()
+                tail = dummy
+                l1, l2 = lists.pop(), lists.pop()
+                while l1 and l2:
+                    if l1.val < l2.val:
+                        tail.next = l1
+                        l1 = l1.next
+                    else:
+                        tail.next = l2
+                        l2 = l2.next
+                    tail = tail.next
+                tail.next = l1 or l2
+                merged.append(dummy.next)
+                
+            lists.extend(merged)
+
         return lists[0] if lists else None
         
         
