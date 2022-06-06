@@ -6,70 +6,112 @@ class Solution:
         
         
         
-        # [1,2,3,4,5]
-        # [4,5,1,2,3]
-        # [3,4,5,1,2]
-        # [2,3,4,5,1]
-        # middle should always be less than right
-        # if mid > right, then we know pivot is between mid and right
-        # else, pivot is between left and mid
+        
         
         # find pivot
+        pivot = 0
         l, r = 0, len(nums) - 1
-        while l < r:
+        while l <= r:
             mid = (l + r) // 2
-            if nums[mid] < nums[r]:
-                r = mid
-            else:
+            if nums[pivot] > nums[mid]:
+                pivot = mid
+            # pivot = min(pivot, nums[mid])
+            if nums[mid] > nums[r]:
                 l = mid + 1
-        # l is the smallest x that matches condition, smallest num that is less than r
-        pivot = l
-        print(l)
+            else:
+                r = mid - 1
         
-        # find which partition target is in
         l, r = 0, len(nums) - 1
         if target <= nums[r]:
             l = pivot
         else:
             r = pivot
+            
+        print(l, r, nums[l:r + 1])
         
-        # search on the applicable half
-        while l < r:
+        while l <= r:
             mid = (l + r) // 2
+            if nums[mid] == target:
+                return mid
             if nums[mid] < target:
                 l = mid + 1
             else:
-                r = mid
+                r = mid - 1
+        return -1
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #############################
+        
+#         # [1,2,3,4,5]
+#         # [4,5,1,2,3]
+#         # [3,4,5,1,2]
+#         # [2,3,4,5,1]
+#         # middle should always be less than right
+#         # if mid > right, then we know pivot is between mid and right
+#         # else, pivot is between left and mid
+        
+#         # find pivot
+#         l, r = 0, len(nums) - 1
+#         while l < r:
+#             mid = (l + r) // 2
+#             if nums[mid] < nums[r]:
+#                 r = mid
+#             else:
+#                 l = mid + 1
+#         # l is the smallest x that matches condition, smallest num that is less than r
+#         pivot = l
+#         print(l)
+        
+#         # find which partition target is in
+#         l, r = 0, len(nums) - 1
+#         if target <= nums[r]:
+#             l = pivot
+#         else:
+#             r = pivot
+        
+#         # search on the applicable half
+#         while l < r:
+#             mid = (l + r) // 2
+#             if nums[mid] < target:
+#                 l = mid + 1
+#             else:
+#                 r = mid
     
-        return l if nums[l] == target else -1
+#         return l if nums[l] == target else -1
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        ###################################
         
 #         # find pivot first
 #         # use pivot to find target
