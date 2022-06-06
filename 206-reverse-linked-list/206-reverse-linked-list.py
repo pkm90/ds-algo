@@ -13,10 +13,8 @@ class Solution:
         
         prev = None
         while head:
-            temp = head.next
-            head.next = prev
-            prev = head
-            head = temp
+            temp, head.next = head.next, prev
+            prev, head = head, temp
         return prev
         
         
