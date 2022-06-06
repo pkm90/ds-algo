@@ -5,9 +5,27 @@ class Solution:
         
         
         
+        # binary search through entire thing
+        # we're looking for pivot, which is also minimum
+        # middle should never be > right, if it is then hte pivot is between mid : right
         
-        
-        # this is just finding pivot
+        # we can either do template or keep track of min
+        # keep track of the minimum
+#         res = float(inf)
+#         l, r = 0, len(nums) - 1
+#         while l < r:
+#             mid = (l + r) // 2
+#             res = min(res, nums[mid])
+            
+#             if nums[mid] > nums[r]:
+#                 l = mid + 1
+#             else:
+#                 r = mid - 1
+#         return res
+
+
+                
+        # template
         l, r = 0, len(nums) - 1
         while l < r:
             mid = (l + r) // 2
@@ -36,6 +54,15 @@ class Solution:
         
         
         
+#         l, r = 0, len(nums) - 1
+#         while l < r:
+#             mid = (l + r) // 2
+#             if nums[mid] < nums[r]:
+#                 r = mid
+#             else:
+#                 l = mid + 1
+#         print(l, r)
+#         return nums[l]
         
         
         
@@ -44,11 +71,22 @@ class Solution:
         
         
         
+        ###################################3
         
-        
-        
-        
-        
+#         # this is just finding pivot
+#         l, r = 0, len(nums) - 1
+#         while l < r:
+#             mid = (l + r) // 2
+#             if nums[mid] < nums[r]:
+#                 r = mid
+#             else:
+#                 l = mid + 1
+                
+#         # since l is the smallest k that matches condition
+#         return nums[l]
+
+
+       #########################
         
 #         # find pivot...pivot is where the left > curr < right
 #         # if mid > right, we know htat pivot is somewhere in the right side
