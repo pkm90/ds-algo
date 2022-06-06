@@ -32,8 +32,7 @@ class Solution:
         while head:
             newHead.random = nodes[head.random] if head.random else None
             newHead.next = nodes[head.next] if head.next else None
-            newHead = newHead.next
-            head = head.next
+            newHead, head = newHead.next, head.next
             
         return nodes[dummy.next]
         
