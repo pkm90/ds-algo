@@ -19,7 +19,6 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
         lhead = head
         rhead = slow.next
         slow.next = None
@@ -36,7 +35,6 @@ class Solution:
 
         # merge lists
         while lhead and rhead:
-            print(lhead.val, rhead.val)
             temp = lhead.next
             lhead.next = rhead
             lhead = temp
@@ -44,14 +42,6 @@ class Solution:
             temp = rhead.next
             rhead.next = lhead
             rhead = temp
-        
-#         # return head
-#         print(lhead, rhead)
-#         while head:
-#             print(head.val)
-#             head = head.next
-#         if rhead:
-#             rhead.next = rhead.next
         
         
         
