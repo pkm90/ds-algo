@@ -12,16 +12,18 @@ class Solution:
         
         
         def balanced(root):
-            # if self.res is False:
-            #     return
+            if self.res is False:
+                return [False, 0]
             if root is None:
-                return 0
+                return [True, 0]
             
             left = balanced(root.left)
             right = balanced(root.right)
-            if abs(left - right) > 1:
+            if abs(left[1] - right[1]) > 1:
                 self.res = False
-            return max(left, right) + 1
+                return [False, float(inf)]
+            else:
+                return [True, max(left[1] + 1, right[1] + 1)]
         
         self.res = True
         balanced(root)
