@@ -8,30 +8,30 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
         
-        def sameTree(rootp, rootq):
-            if rootp is None and rootq is None:
-                return True
-            if bool(rootp) != bool(rootq):
-                return False
-            if rootp.val != rootq.val:
-                return False
+#         def sameTree(rootp, rootq):
+#             if rootp is None and rootq is None:
+#                 return True
+#             if bool(rootp) != bool(rootq):
+#                 return False
+#             if rootp.val != rootq.val:
+#                 return False
             
-            left = sameTree(rootp.left, rootq.left)
-            right = sameTree(rootp.right, rootq.right)
-            return left and right
+#             left = sameTree(rootp.left, rootq.left)
+#             right = sameTree(rootp.right, rootq.right)
+#             return left and right
         
-        def dfs(rootp, rootq):
-            if rootp is None:
-                return False
-            same = False
-            if rootp.val == rootq.val:
-                same = sameTree(rootp, rootq)
-            left = dfs(rootp.left, rootq)
-            right = dfs(rootp.right, rootq)
+#         def dfs(rootp, rootq):
+#             if rootp is None:
+#                 return False
+#             same = False
+#             if rootp.val == rootq.val:
+#                 same = sameTree(rootp, rootq)
+#             left = dfs(rootp.left, rootq)
+#             right = dfs(rootp.right, rootq)
             
-            return same or left or right
+#             return same or left or right
         
-        return dfs(root, subRoot)
+#         return dfs(root, subRoot)
         
         
         
