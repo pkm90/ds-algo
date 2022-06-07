@@ -10,31 +10,32 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        # return
+        
         if root is None:
             return 0
         
-        left = self.maxDepth(root.left) + 1
-        right = self.maxDepth(root.right) + 1
-        return max(left, right)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        return max(left, right) + 1
         
         
         return
