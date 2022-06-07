@@ -8,18 +8,32 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
         
-#         def sameTree(rootp, rootq):
-#             if rootp is None and rootq is None:
-#                 return True
-#             if bool(rootp) != bool(rootq):
-#                 return False
-#             if rootp.val != rootq.val:
-#                 return False
+        def sameTree(rootp, rootq):
+            if rootp is None and rootq is None:
+                return True
+            if bool(rootp) != bool(rootq):
+                return False
+            if rootp.val != rootq.val:
+                return False
             
-#             left = sameTree(rootp.left, rootq.left)
-#             right = sameTree(rootp.right, rootq.right)
-#             return left and right
+            left = sameTree(rootp.left, rootq.left)
+            right = sameTree(rootp.right, rootq.right)
+            return left and right
         
+        # iterative
+        q = collections.deque([root])
+        while q:
+            curr = q.popleft()
+            if curr.val == subRoot.val and sameTree(curr, subRoot):
+                return True
+        
+            if curr.left:
+                q.append(curr.left)
+            if curr.right:
+                q.append(curr.right)
+        return False
+            
+#         # recursive
 #         def dfs(rootp, rootq):
 #             if rootp is None:
 #                 return False
@@ -32,42 +46,6 @@ class Solution:
 #             return same or left or right
         
 #         return dfs(root, subRoot)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         #################
