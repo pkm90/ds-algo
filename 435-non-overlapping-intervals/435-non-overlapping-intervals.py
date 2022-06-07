@@ -13,6 +13,6 @@ class Solution:
             if prevEnd > start:
                 prevEnd = min(prevEnd, end)
                 count += 1
-                continue
-            prevEnd = end
+            else:
+                prevEnd = end
         return count
