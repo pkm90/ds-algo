@@ -13,7 +13,7 @@ class Solution:
         
         def balanced(root):
             if self.res is False:
-                return 0
+                return float(inf)
             if root is None:
                 return 0
             
