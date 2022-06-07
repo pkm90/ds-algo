@@ -11,21 +11,21 @@ class Solution:
         
         
         
-        def balanced(root):
-            if self.res is False:
-                return float(inf)
-            if root is None:
-                return 0
+#         def balanced(root):
+#             if self.res is False:
+#                 return float(inf)
+#             if root is None:
+#                 return 0
             
-            left = balanced(root.left)
-            right = balanced(root.right)
-            if abs(left - right) > 1:
-                self.res = False
-            return max(left, right) + 1
+#             left = balanced(root.left)
+#             right = balanced(root.right)
+#             if abs(left - right) > 1:
+#                 self.res = False
+#             return max(left, right) + 1
         
-        self.res = True
-        balanced(root)
-        return self.res
+#         self.res = True
+#         balanced(root)
+#         return self.res
     
       
         def balanced(root):
