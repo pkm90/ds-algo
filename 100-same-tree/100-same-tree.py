@@ -11,24 +11,35 @@ class Solution:
         
         
         
+        if bool(p) != bool(q):
+            return False
+        if p is None:
+            return True
+        if p.val != q.val:
+            return False
+        
+        left = self.isSameTree(p.left, q.left)
+        right = self.isSameTree(p.right, q.right)
+        return left and right
         
         
-        qu = collections.deque()
-        qu.append((p, q))
         
-        while qu:
-            currP, currQ = qu.popleft()
-            if bool(currP) != bool(currQ):
-                return False
-            if not currP:
-                continue
+#         qu = collections.deque()
+#         qu.append((p, q))
+        
+#         while qu:
+#             currP, currQ = qu.popleft()
+#             if bool(currP) != bool(currQ):
+#                 return False
+#             if not currP:
+#                 continue
             
-            if currP.val != currQ.val:
-                return False
-            qu.append((currP.left, currQ.left))
-            qu.append((currP.right, currQ.right))
+#             if currP.val != currQ.val:
+#                 return False
+#             qu.append((currP.left, currQ.left))
+#             qu.append((currP.right, currQ.right))
             
-        return True
+#         return True
         
         
         
