@@ -11,7 +11,7 @@ class Solution:
             total = 0
             while n != 0:
                 digit = n % 10
-                total += digit**2
+                total += digit**2 # can't use carrot, must use **
                 n = n // 10
             n = total
         
