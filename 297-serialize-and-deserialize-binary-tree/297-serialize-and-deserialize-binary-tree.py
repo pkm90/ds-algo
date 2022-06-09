@@ -2,13 +2,16 @@
 # do again
 ####
 
-
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, val):
 #         self.val = val
 #         self.left = None
 #         self.right = None
+
+
+
+
 
 # class Codec:
 
@@ -78,6 +81,36 @@
 #         """
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################
+
+
 class Codec:
 
     def serialize(self, root: Optional[TreeNode]) -> str:
@@ -120,9 +153,9 @@ class Codec:
                 continue
             
             temp = data.pop(0)
-            left = None if temp.isalpha() else TreeNode(val = int(temp))
+            left = None if temp.isalpha() else TreeNode(val = temp)
             temp = data.pop(0)
-            right = None if temp.isalpha() else TreeNode(val = int(temp))
+            right = None if temp.isalpha() else TreeNode(val = temp)
             curr.left = left
             curr.right = right
             q.extend([curr.left, curr.right])
@@ -131,45 +164,7 @@ class Codec:
         return root
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 ############
 
 
