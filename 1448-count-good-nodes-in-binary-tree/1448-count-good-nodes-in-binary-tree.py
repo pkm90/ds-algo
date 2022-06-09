@@ -9,63 +9,70 @@ class Solution:
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        count = [0]
-        
-        def countNodes(root, currentMax):
-            if root is None: 
+        def countNodes(root, greatestSoFar):
+            if root is None:
                 return
+            
+            if root.val >= greatestSoFar:
+                self.res += 1
+            countNodes(root.left, max(root.val, greatestSoFar))
+            countNodes(root.right, max(root.val, greatestSoFar))
 
-            if root.val >= currentMax: 
-                count[0] += 1
-            countNodes(root.left, max(currentMax, root.val))
-            countNodes(root.right, max(currentMax, root.val))
-
+        self.res = 0
         countNodes(root, float(-inf))
-        return count[0]
+        return self.res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         count = [0]
+        
+#         def countNodes(root, currentMax):
+#             if root is None: 
+#                 return
+
+#             if root.val >= currentMax: 
+#                 count[0] += 1
+#             countNodes(root.left, max(currentMax, root.val))
+#             countNodes(root.right, max(currentMax, root.val))
+
+#         countNodes(root, float(-inf))
+#         return count[0]
 
