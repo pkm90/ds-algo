@@ -1,5 +1,9 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
+
+        
+        
+        
         
         
         
@@ -33,86 +37,3 @@ class Solution:
         return res
         
         
-        
-        
-        
-        
-       
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   ###############################     
-        
-        
-        
-        
-#         # start from outside, keep track of max, calculate area
-#         # move the smaller pointer inward since the area is capped by the smaller pointer
-#         maxHeight = 0
-#         l, r = 0, len(height) - 1
-        
-#         while l < r:
-#             area = min(height[l], height[r]) * (r - l)
-#             maxHeight = max(maxHeight, area)
-#             if height[l] < height[r]:
-#                 l += 1
-#             else:
-#                 r -= 1
-        
-#         return maxHeight
-        
-        
-        
-###################
-        
-#         # keep track of max
-#         # we can start from outside to maximize width
-#         # we then work our way inside
-#         # which pointer do we move? we move the smaller one since
-#         #  moving the larger one cannot increase height as the height
-#         #  is bounded by the min of both points
-        
-#         n = len(height)
-#         l, r = 0, n - 1
-#         maxHeight = 0
-        
-#         while l < r:
-#             h = min(height[l], height[r])
-#             w = r - l
-#             area = w * h
-#             maxHeight = max(maxHeight, area)
-            
-#             if height[l] < height[r]:
-#                 l += 1
-#             else:
-#                 r -= 1
-        
-#         return maxHeight
