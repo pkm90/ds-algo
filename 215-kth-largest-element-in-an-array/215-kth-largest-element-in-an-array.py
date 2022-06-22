@@ -14,3 +14,5 @@ class Solution:
         for _ in range(k - 1):
             heapq.heappop(nums)
         return nums[0] * -1
+    
+        # good solution would be quicksort/quickselect, but naw...
