@@ -21,9 +21,9 @@ class Solution:
     
         # 2 ptr, start outwards and go inwards
         # we shift the smaller of the two ptr since the max area is bounded by smaller
-        n = len(height)
+        # n = len(height)
         res = 0
-        l, r = 0, n - 1
+        l, r = 0, len(height) - 1
         while l < r:
             fat = r - l
             tall = min(height[l], height[r])
