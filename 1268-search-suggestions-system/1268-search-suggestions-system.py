@@ -15,13 +15,8 @@ class Solution:
             for pdx, p in enumerate(prods):
                 for idx, c in enumerate(pref):
                     if idx >= len(p) or p[idx] != c:
-                        # print(resProds)
-                        # print(p, p[idx], c)
-                        # print('popping ', resProds[pdx])
-                        # resProds.pop(pdx)
                         resProds.remove(p)
                         break
-            # print('returning ', resProds)
             return resProds
         
                 
@@ -36,8 +31,7 @@ class Solution:
             pref += char
             
             # if any character doesn't have the same prefix, then remove from products
-            products = removeProducts(products, pref)#.copy()
-            # print(pref, products)
+            products = removeProducts(products, pref)
             
             # grab first 3 words and append to res
             res.append(products[:3])
