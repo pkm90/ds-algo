@@ -16,6 +16,34 @@ class Solution:
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         # populate hashmap { node : newnode }
         # iterate through ll and new ll at same time, populate the pointers
         if head is None: return
@@ -35,43 +63,6 @@ class Solution:
             newHead, head = newHead.next, head.next
             
         return nodes[dummy.next]
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         ###################
         
