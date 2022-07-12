@@ -1,9 +1,35 @@
+
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ####################################
         
         # is the input sorted or do we have to sort?
         intervals.sort()
@@ -19,41 +45,10 @@ class Solution:
                 prev = [min(prev[0], curr[0]), max(prev[1], curr[1])]
         
         print(prev)
-        if prev[1] >= intervals[-1][0]:
+        if prev[1] >= intervals[-1][0]: # checks if last element was added
             res.append(prev)
         return res
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
         
         ########################################
         
