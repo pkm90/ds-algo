@@ -31,23 +31,23 @@ class Solution:
         
         ####################################
         
-        # is the input sorted or do we have to sort?
-        intervals.sort()
-        res = []
-        start, end = intervals[0][0], intervals[0][1]
-        prev = intervals[0]
-        for curr in intervals:
-            if prev[1] < curr[0]:
-                res.append(prev)
-                prev = curr
-                continue
-            else: # prev[1] >= curr[0]: # if prevEnd >= currStart then we merge
-                prev = [min(prev[0], curr[0]), max(prev[1], curr[1])]
+#         # is the input sorted or do we have to sort?
+#         intervals.sort()
+#         res = []
+#         start, end = intervals[0][0], intervals[0][1]
+#         prev = intervals[0]
+#         for curr in intervals:
+#             if prev[1] < curr[0]:
+#                 res.append(prev)
+#                 prev = curr
+#                 continue
+#             else: # prev[1] >= curr[0]: # if prevEnd >= currStart then we merge
+#                 prev = [min(prev[0], curr[0]), max(prev[1], curr[1])]
         
-        print(prev)
-        if prev[1] >= intervals[-1][0]: # checks if last element was added
-            res.append(prev)
-        return res
+#         print(prev)
+#         if prev[1] >= intervals[-1][0]: # checks if last element was added
+#             res.append(prev)
+#         return res
     
         
         ########################################
