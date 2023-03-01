@@ -13,8 +13,8 @@ class Solution:
         
         # below works since it runs at most n times
         # useful for debugging as it removes infinite loops
-        while left <= right:
-        # for i in range(len(nums)):
+        # while left <= right:
+        for i in range(len(nums)):
             print(left, right)
             mid = (left + right) // 2
             if nums[mid] == target:
