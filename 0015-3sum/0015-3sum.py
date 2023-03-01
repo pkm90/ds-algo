@@ -8,7 +8,7 @@ class Solution:
         res = []
         
         nums.sort()
-        print(nums)
+        # print(nums)
 #         [     c   l        r   ]
 #         [-2, -1, -1, 0, 1, 2, 3]
 
@@ -28,7 +28,7 @@ class Solution:
 
                 if total == 0:
                     if (nums[curr], nums[l], nums[r]) not in used:
-                        print(curr, l, r)
+                        # print(curr, l, r)
                         used.add((nums[curr], nums[l], nums[r]))
                         res.append([nums[curr], nums[l], nums[r]])
                     # else:
@@ -38,5 +38,5 @@ class Solution:
                 else:
                     r = r - 1
         
-        print(used)
+        # print(used)
         return res
