@@ -2,47 +2,37 @@ class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         
         
-        # check the values match
-        # some indice condition <= k
+        # True if there are duplicates within a window of size k
         
-#         k = 2
-#         [1,2,3,1,2,3, ....... N]
-#            l r
+        # check edgecase where k in larger than input
+        k = min(len(nums), k)
         
         # setup window
-        # k = k + 1
-        k = min(len(nums), k)
         window = set()
         for i in range(k):
             window.add(nums[i])
         print(window)
-        
-        # if len(window) < k:
-        #     return True
-        
+                
         # iterate window
         left = 0
         right = k
         while right < len(nums):
             # print(window, nums[left], nums[right],left, right)
-            # print(right - left, k)
             if len(window) < k:
-                print(window, left, right)
+                print("inner: ", window, left, right)
                 return True   
             
-            # print(window, left, right)
             window.add(nums[right])
             window.remove(nums[left])
-
             left += 1
             right += 1
-            
-            # if len(window) < (right - left):
-            
+
+        # check final window
         if len(window) < k:
-            print(window, left, right)
-            return True   
-        print(window)
+            print("final: ", window, left, right)
+            return True
+        
+        print("False: ", window)
         return False
         
 #         left = 0
@@ -54,4 +44,4 @@ class Solution:
 #                         return True
 #                 right += 1
             
-        return False
+#         return False
