@@ -1,42 +1,15 @@
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         
-          
-        
-#         adj = {node: [connections]}
-#         adj = {0: [1],
-#                1: [0, 2],
-#                2: [1],
-#                3: [4],
-#                4: [3]}
-        
-#         captains = [0,1,2,3,4]
-#         people = [1,1,1,1,1]        
-        
-        
-#         for i in in:
-#             captain.append([i, 1])
             
-#         for node, others in adj.items():
-            
-#         for edge in edges:
-#             left = edge[0]
-#             right = edge[1]
-            
-#         if people[left] > people[right]:
-#             captain[right] = captain[left]
-#         else:
-#             captain[left] = captain[right]
+        # captain = { i:i for i in range(n) }
+        captain = {}
+        for i in range(n):
+            captain[i] = i
         
-            
-        
-        
-        
-            
-        captain = { i:i for i in range(n) }
         army = { i:1 for i in range(n) }
-        print(captain)
-        print(army)
+        print("captains: ", captain)
+        print("army:     ", army)
         
         # if root is itself, return it
         # otherwise, recursively set root to it's parent
@@ -45,18 +18,24 @@ class Solution:
                 return n
             captain[n] = find(captain[n])
             return captain[n]
+        
+        # find returns the captain of a group
             
         def union(n1, n2):
-            p1, p2 = find(n1), find(n2)
-            if p1 == p2:
+            left, right = find(n1), find(n2)
+            if left == right:
                 return
-            if army[p1] >= army[p2]:
-                captain[p2] = p1
-                army[p1] += army[p2]
+            
+            if army[left] >= army[right]:
+                captain[right] = left
+                army[left] += army[right]
             else:
-                captain[p1] = p2
-                army[p2] += army[p1]
+                captain[left] = right
+                army[right] += army[left]
                 
+                
+        # edges.sort()
+        # print(edges)
         for edge in edges:
             union(edge[0], edge[1])
         
