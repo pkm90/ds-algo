@@ -2,6 +2,8 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         
         
+        # expand window each iteration
+        # if current r exists, remove from l until it doesn't
         if len(s) == 0:
             return 0
         l = 0
@@ -25,4 +27,6 @@ class Solution:
             res = max(res, len(window))
             
         return res
+    
+    
             
