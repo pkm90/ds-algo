@@ -6,11 +6,9 @@
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         
+
         
-#         1 3 5
-#         2 4 6 7 8 9
-#         ....
-#         k
+        
         if not lists:
             return
         
@@ -44,10 +42,8 @@ class Solution:
             
             # merge two lists
             merged = merge(left, right)
-            # print(merged)
             lists.append(merged)
             
-#         print(lists)
         return lists[0]
             
         
