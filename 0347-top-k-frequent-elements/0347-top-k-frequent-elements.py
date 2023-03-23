@@ -4,6 +4,27 @@ class Solution:
         
         
         
+#         # count elements, put into array where idx is the freq
+#         count = Counter(nums)
+#         freq = [ [] for i in range(len(nums)) ]
+#         print(count)
+#         for key, cnt in count.items():
+#             freq[cnt - 1].append(key)
+#         print(freq)
+        
+#         # iterate backwards until result hold k elements
+#         res = []
+#         for i in range(len(freq) - 1, -1, -1):
+#             for num in freq[i]:
+#                 res.append(num)
+#                 if len(res) == k:
+#                     return res
+#         print('outside')
+        
+        
+        
+        
+        
         res = []
         count = {}
         # hashmap = {key : val} {num : count}
@@ -12,10 +33,11 @@ class Solution:
                 count[num] += 1
             else:
                 count[num] = 1
+            
+            
         print(count)
         
-        # iterate through counts, keep track of top, return top        
-        # add k:v to res, sort, return [:k]
+        # iterate through counts, keep track of top, return top
         
         temp = []
         for key,val in count.items():
@@ -31,6 +53,9 @@ class Solution:
             
         print(res)
         return res
+        
+        
+        
         
         
         
