@@ -11,42 +11,49 @@ class Solution:
         # if we reach base case, then append the string maybe...?
         
         # this doesn't currently work, can use as recursive practice
-#         def isValid(start, end):
-#             if start == end:
-#                 print("found")
-#                 return True
+        def isValidSubstring(start, end):
+            if start == end:
+                # print("found")
+                return True
             
-#             # if valid, do same on all subchar
-#             print(start, end)
-#             print(s[start], s[end])
-#             if finalChar[s[start]] <= finalChar[s[end]]:
-#                 print("true")
-#                 return isValid(start + 1, end)
-#             else:
-#                 return False
+            # if valid, do same on all subchar
+            # print(start, end)
+            # print(s[start], s[end])
+            if finalChar[s[start]] <= finalChar[s[end]]:
+                # print("true")
+                return isValidSubstring(start + 1, end)
+            else:
+                return False
             
-#         finalChar = {}
-#         n = len(s)
-#         for i in range(n):
-#             finalChar[s[i]] = i
+        finalChar = {}
+        n = len(s)
+        for i in range(n):
+            finalChar[s[i]] = i
+        print(finalChar)
             
-#         parts = []
-#         first = 0
-#         last = finalChar[s[0]]
-#         for i in range(n):
-#             if isValid(first, last):
-#                 parts.append(s[first:last + 1])
-#                 i = last + 1
-#                 last = last + 1
-#                 first = last + 1
-#             else:
-#                 last = finalChar[s[last]]
+        parts = []
+        first = 0
+        last = finalChar[s[0]]
+        i = 0
+        while i < len(s):
+        # for i in range(n):
+            # print(i)
+            # first = i
+            last = finalChar[s[i]]
+            # print("checking: ", first, last, s[first:last + 1])
+            if isValidSubstring(first, last):
+                parts.append(s[first:last + 1])
+                i = last + 1
+                first = i
+            else:
+                i += 1
 
-#         print(parts)
-#         res = []
-#         for part in parts:
-#             res.append(len(part))
-#         return res
+        print(parts)
+        res = []
+        for part in parts:
+            res.append(len(part))
+        print(res)
+        return res
         
         
         # mark's idea:
