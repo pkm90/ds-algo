@@ -9,38 +9,35 @@ class Solution:
         # check if substring of each substring is valid, solve smaller problem
         # base case is if there is only one string/char
         # if we reach base case, then append the string maybe...?
-        
-        # this doesn't currently work, can use as recursive practice
+        # both of below work
+            
+            
+        # for some given substring
+        # this will check if all subchar are within the last index of given char
         def isValidSubstring(start, end):
             if start == end:
-                # print("found")
                 return True
             
             # if valid, do same on all subchar
-            # print(start, end)
-            # print(s[start], s[end])
             if finalChar[s[start]] <= finalChar[s[end]]:
-                # print("true")
                 return isValidSubstring(start + 1, end)
             else:
                 return False
             
+        # creating hashmap of last indices
         finalChar = {}
-        n = len(s)
-        for i in range(n):
+        for i in range(len(s)):
             finalChar[s[i]] = i
         print(finalChar)
-            
+        
         parts = []
         first = 0
         last = finalChar[s[0]]
         i = 0
         while i < len(s):
-        # for i in range(n):
-            # print(i)
-            # first = i
             last = finalChar[s[i]]
             # print("checking: ", first, last, s[first:last + 1])
+            # if valid, set i to skip used substr and reset beginning of next substr
             if isValidSubstring(first, last):
                 parts.append(s[first:last + 1])
                 i = last + 1
@@ -48,10 +45,11 @@ class Solution:
             else:
                 i += 1
 
-        print(parts)
         res = []
         for part in parts:
             res.append(len(part))
+        
+        print(parts)
         print(res)
         return res
         
