@@ -2,8 +2,10 @@ class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         
         
-        
+        # time:  o(n)
+        # space: o(n)
         # track last indice of each char
+        
         finalChar = {}
         n = len(s)
         for i in range(n):
@@ -18,8 +20,11 @@ class Solution:
             end = max(end, finalChar[char])
             
             if i == end:
-                parts.append(s[start:end + 1])
+                # parts.append(s[start:end + 1])
+                parts.append(end - start + 1)
                 start = end + 1
+                
+        return parts
         
         res = []
         for part in parts:
