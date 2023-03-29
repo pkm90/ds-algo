@@ -4,8 +4,16 @@ class Solution:
         
         # time:  o(n)
         # space: o(n)
-        # track last indice of each char
         
+        # first idea was to create a function valid() and do things that way
+        
+        # mark's idea:
+        # keep track of last occurence of char
+        # if i == largest occurence of seen char
+        #    we found a valid substring
+        
+        
+        # track last indice of each char        
         finalChar = {}
         n = len(s)
         for i in range(n):
@@ -20,32 +28,18 @@ class Solution:
             end = max(end, finalChar[char])
             
             if i == end:
-                # parts.append(s[start:end + 1])
-                parts.append(end - start + 1)
+                parts.append(s[start:end + 1])
+                # parts.append(end - start + 1)
                 start = end + 1
                 
-        return parts
+        # return parts
         
         res = []
         for part in parts:
             res.append(len(part))
             
-        # print(parts)
+        print(parts)
         return res
-        
-        # given a string
-        # find first and last occurences of the first char
-        # a: [0,2,7,9]
-
-    
-#     start = 0
-#     iterate through string:
-  
-#           keep track of largest idx of previous chars
-#   if i == largest:
-#     parts.append(input[start:largest])
-#     set/reset start
-
 
     
         
