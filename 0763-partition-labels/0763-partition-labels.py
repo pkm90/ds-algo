@@ -6,6 +6,48 @@ class Solution:
         # space: o(n)
         
         # first idea was to create a function valid() and do things that way
+        # check if substring of each substring is valid, solve smaller problem
+        # base case is if there is only one string/char
+        # if we reach base case, then append the string maybe...?
+        
+        # this doesn't currently work, can use as recursive practice
+#         def isValid(start, end):
+#             if start == end:
+#                 print("found")
+#                 return True
+            
+#             # if valid, do same on all subchar
+#             print(start, end)
+#             print(s[start], s[end])
+#             if finalChar[s[start]] <= finalChar[s[end]]:
+#                 print("true")
+#                 return isValid(start + 1, end)
+#             else:
+#                 return False
+            
+#         finalChar = {}
+#         n = len(s)
+#         for i in range(n):
+#             finalChar[s[i]] = i
+            
+#         parts = []
+#         first = 0
+#         last = finalChar[s[0]]
+#         for i in range(n):
+#             if isValid(first, last):
+#                 parts.append(s[first:last + 1])
+#                 i = last + 1
+#                 last = last + 1
+#                 first = last + 1
+#             else:
+#                 last = finalChar[s[last]]
+
+#         print(parts)
+#         res = []
+#         for part in parts:
+#             res.append(len(part))
+#         return res
+        
         
         # mark's idea:
         # keep track of last occurence of char
@@ -33,7 +75,6 @@ class Solution:
                 start = end + 1
                 
         # return parts
-        
         res = []
         for part in parts:
             res.append(len(part))
