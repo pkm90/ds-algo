@@ -8,10 +8,11 @@ class Solution:
             if op == '+': 
                 return stack[-1] + stack[-2]
             if op == 'D': 
-                # print(stack)
                 return stack[-1] * 2
+            # isnumeric and isdigit don't work with negative
+            # if it gets to this case, it's definitely an int
+            # just cast and return
             # if op.isnumeric():
-            
             return int(op)
             
         stack = []
