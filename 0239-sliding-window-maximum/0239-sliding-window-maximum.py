@@ -2,35 +2,6 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
 
 
-
-        
-        
-        
-        # first attempt after more than a year
-        # first section of code can be ignored...
-    # copied and pasted this to log progress
-    # couldn't pass all test cases, took too long trying to optimize
-        res = []
-        l, r = 0, k - 1
-        stack = collections.deque() # [index, val]
-        for i in range(k):
-            while stack and stack[-1][1] < nums[i]:
-                stack.pop()
-            stack.append([i, nums[i]])
-        res.append(stack[0][1])
-        print(stack)
-        
-        for r in range(k, len(nums), 1):
-            while stack and stack[0][0] <= r - k:
-                stack.popleft()
-            while stack and stack[-1][1] < nums[r]:
-                stack.pop()
-            stack.append([r, nums[r]])
-            res.append(stack[0][1])
-            
-        return res
-        
-        
         
         # need to use a data structure to keep track track of window sorting
         # since finding next largest is an expensive operation
@@ -39,65 +10,67 @@ class Solution:
         
         # time is n * k, since we are iterating over each element up to k times
         # space is n
-        
-        # 
-        
-        res = []
-        l, r = 0, k
-        window = Counter(nums[l:r])
-        largest = max(window)
-        res.append(largest)
+                
+#         res = []
+#         l, r = 0, k
+#         window = Counter(nums[l:r])
+#         largest = max(window)
+#         res.append(largest)
 
-        # iterate until right gets to the end of input list
-        while r < len(nums):
-            # add right
-            if nums[r] not in window:
-                window[nums[r]] = 1
-            else:
-                window[nums[r]] += 1
+#         # iterate until right gets to the end of input list
+#         while r < len(nums):
+#             # add right
+#             if nums[r] not in window:
+#                 window[nums[r]] = 1
+#             else:
+#                 window[nums[r]] += 1
 
-            # remove left
-            window[nums[l]] -= 1
-            if window[nums[l]] == 0:
-                del window[nums[l]]
-            if largest == nums[l]: # and nums[l] not in window:, this helps a bit but not enough
-                largest = max(window)
+#             # remove left
+#             window[nums[l]] -= 1
+#             if window[nums[l]] == 0:
+#                 del window[nums[l]]
+#             if largest == nums[l]: # and nums[l] not in window:, this helps a bit but not enough
+#                 largest = max(window)
             
-            # iterate
-            l += 1
-            r += 1
-            largest = max(largest, nums[r - 1])
-            res.append(largest)
+#             # iterate
+#             l += 1
+#             r += 1
+#             largest = max(largest, nums[r - 1])
+#             res.append(largest)
 
-        return res
+#         return res
 
     
     
     
         res = []
-        l, r = 0, k
+        l, r = 0, 0
         window = collections.deque()
-        window.append(max(nums[l:r]))
-        res.append(window[-1])
-        print(window)
+        # window.append(max(nums[l:r]))
+        # res.append(window[-1])
+        # print(window)
 
         # iterate until right gets to the end of input list
         while r < len(nums):
-            # add right
-            if nums[r] >= window[-1]:
-                window.append(nums[r])
-
-            # remove left
-            if nums[l] == window[0]:
-                window.popleft()
             
-            # iterate
-            l += 1
+            # keep popping while largest are oob
+            while window and window[0][0] < l:
+                window.popleft()
+                
+            # keep popping while the smallest is larger than current
+            # this maintains a monotomically decreasing stack
+            # print(r)
+            while window and window[-1][1] < nums[r]:
+                window.pop()
+                
+            window.append([r, nums[r]])
+                        
+            # iterate, create window first before appending
+            # print(window)
+            if r >= k - 1:
+                res.append(window[0][1])
+                l += 1
             r += 1
-            # largest = max(largest, nums[r - 1])
-            print(window)
-            res.append(window[-1])
-
         return res
     
     
